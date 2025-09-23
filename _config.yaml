@@ -1,7 +1,7 @@
 # site properties and page defaults
-title: Lab Website Template
-subtitle: by the Greene Lab
-description: An easy-to-use, flexible website template for labs, with automatic citations, GitHub tag imports, pre-built components, and more.
+title: Laboratorio de Investigación en Robótica Avanzada
+subtitle: Universidad Nacional Autónoma de México
+description: 
 header: images/background.jpg
 footer: images/background.jpg
 proofer: false
@@ -11,9 +11,8 @@ links:
   email: contact@your-lab.com
   orcid: 0000-0001-8713-9213
   google-scholar: ETJoidYAAAAJ
-  github: your-lab
-  twitter: YourLabHandle
-  youtube: YourLabChannel
+  github: https://github.com/LIRA-UNAM
+  youtube: LIRA
 
 ### jekyll settings
 

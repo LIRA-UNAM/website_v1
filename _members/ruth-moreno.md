@@ -1,10 +1,11 @@
 ---
-name: John Doe
+name: Ruth Moreno
 image: images/photo.jpg
-role: phd
-group: alum
+role: undergrad
+description: Computer Vision
 links:
-  github: john-doe
+  email: sarah.johnson@gmail.com
+  twitter: sarahjohnson
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
