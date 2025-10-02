@@ -8,10 +8,10 @@ proofer: false
 
 # site social media and other links
 links:
-  email: contact@your-lab.com
+  email: lir.pumas@gmail.com
   orcid: 0000-0001-8713-9213
   google-scholar: ETJoidYAAAAJ
-  github: https://github.com/LIRA-UNAM
+  github: LIRA-UNAM
   youtube: LIRA
 
 ### jekyll settings

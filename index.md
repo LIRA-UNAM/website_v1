@@ -1,21 +1,20 @@
 ---
 ---
+## Who are we?
 
-# Lab Website Template
-
-[Lab Website Template](https://github.com/greenelab/lab-website-template) is an easy-to-use, flexible website template for [labs](https://www.greenelab.com/).
-Spend less time worrying about managing a website and citations, and more time running your lab.
+LIRA is a research laboratory founded in the School of Engineering and belongs to the National Autonomous University of Mexico. Our research ranges, from cutting edge robotics, computer vision, locomotion, reinforcement learning and humanoid robot interaction (HRI). Our research fields focus on Humanoid Robotics, UAV's and many more.
 
 {%
   include button.html
-  type="docs"
+  type="youtube"
+  text="LIRA Youtube"
   link="https://greene-lab.gitbook.io/lab-website-template-docs"
 %}
 {%
   include button.html
   type="github"
-  text="On GitHub"
-  link="greenelab/lab-website-template"
+  text="Follow us on Github"
+  link="LIRA-UNAM"
 %}
 
 {% include section.html %}
