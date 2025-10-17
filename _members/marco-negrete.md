@@ -1,5 +1,5 @@
 ---
-name: Dr. Marco Negrete
+name: Marco Negrete
 affiliaton: Ingeniería - UNAM
 image: images/photo.jpg
 role: professor

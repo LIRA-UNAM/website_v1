@@ -1,14 +1,17 @@
 ---
 ---
-## Who are we?
+# **Who are we?**
+{:.left}
+---
 
-LIRA is a research laboratory founded in the School of Engineering and belongs to the National Autonomous University of Mexico. Our research ranges, from cutting edge robotics, computer vision, locomotion, reinforcement learning and humanoid robot interaction (HRI). Our research fields focus on Humanoid Robotics, UAV's and many more.
-
+LIRA is a research laboratory founded within the School of Engineering at the National Autonomous University of Mexico. We develop cutting-edge robotics, computer vision, locomotion, reinforcement learning, and humanoid robot interaction (HRI), with emphasis on humanoid robotics, UAVs, and related areas.
+<br>
+<br>
 {%
   include button.html
   type="youtube"
   text="LIRA Youtube"
-  link="https://greene-lab.gitbook.io/lab-website-template-docs"
+  link="@LIRA-UNAM"
 %}
 {%
   include button.html
@@ -27,7 +30,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 {%
   include button.html
-  link="research"
+  link="publications"
   text="See our publications"
   icon="fa-solid fa-arrow-right"
   flip=true
@@ -75,7 +78,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 {%
   include button.html
-  link="team"
+  link="people"
   text="Meet our team"
   icon="fa-solid fa-arrow-right"
   flip=true
@@ -87,7 +90,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 {%
   include feature.html
   image="images/photo.jpg"
-  link="team"
+  link="people"
   title="Our Team"
   text=text
 %}

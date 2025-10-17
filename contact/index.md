@@ -7,48 +7,40 @@ nav:
 
 # {% include icon.html icon="fa-regular fa-envelope" %}Contact
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+You can contact us by email or phone, or visit us on the ground floor of Building U – Classrooms for Graduate Studies and Advising, at the Graduate Program in Engineering, UNAM.
+<br>
+<br>
 
 {%
   include button.html
   type="email"
-  text="jane@smith.com"
-  link="jane@smith.com"
+  text="lir.pumas@gmail.com"
+  link="lir.pumas@gmail.com"
 %}
 {%
   include button.html
   type="phone"
-  text="(555) 867-5309"
-  link="+1-555-867-5309"
+  text="55-5622-3899 Ext 86247"
+  link="+52-55-5622-3899"
 %}
 {%
   include button.html
   type="address"
   tooltip="Our location on Google Maps for easy navigation"
-  link="https://www.google.com/maps"
+  link="https://www.google.com/maps/place/19%C2%B019'42.5%22N+99%C2%B010'53.4%22W/@19.3284733,-99.1821401,19z/data=!3m1!4b1!4m4!3m3!8m2!3d19.328472!4d-99.181495?entry=ttu&g_ep=EgoyMDI1MTAwNi4wIKXMDSoASAFQAw%3D%3D"
 %}
 
 {% include section.html %}
 
 {% capture col1 %}
 
-{%
-  include figure.html
-  image="images/photo.jpg"
-  caption="Lorem ipsum"
-%}
+
 
 {% endcapture %}
 
 {% capture col2 %}
 
-{%
-  include figure.html
-  image="images/photo.jpg"
-  caption="Lorem ipsum"
-%}
+
 
 {% endcapture %}
 
@@ -56,22 +48,30 @@ nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
 {% include section.html dark=true %}
 
+
 {% capture col1 %}
-Lorem ipsum dolor sit amet  
-consectetur adipiscing elit  
-sed do eiusmod tempor
+<div style="font-size: 0.9em;">
+Universidad Nacional Autónoma de México <br>
+Av. Universidad 3000, Ciudad Universitaria, Coyoacán, Cd. Mx., CP 04510  
+</div>
 {% endcapture %}
+ 
 
 {% capture col2 %}
-Lorem ipsum dolor sit amet  
-consectetur adipiscing elit  
-sed do eiusmod tempor
+<div style="font-size: 0.9em;"> 
+Facultad de Ingeniería <br>
+Av. Universidad 3000, Ciudad Universitaria, Coyoacán, Cd. Mx., CP 04510  <br>
+email: fainge@unam.mx
+</div>
 {% endcapture %}
 
 {% capture col3 %}
-Lorem ipsum dolor sit amet  
-consectetur adipiscing elit  
-sed do eiusmod tempor
+<div style="font-size: 0.9em;">
+Posgrado de Ingeniería Eléctrica
+Edificio S – “Bernardo Quintana Arrioja”, Primer Piso, Facultad de Ingeniería, Cd. Universitaria, Cd. Mx. C.P. 04510.
+email: ingenieria.electrica@posgrado.unam.mx
+</div>
+
 {% endcapture %}
 
 {% include cols.html col1=col1 col2=col2 col3=col3 %}

@@ -1,6 +1,6 @@
 ---
 name: Camille Frias
-image: images/photo.jpg
+image: images/camille.jpg
 role: undergrad
 affiliation: UNAM
 group: alum

@@ -1,5 +1,5 @@
 ---
-name: Miriam
+name: Miriam Velàzquez
 affiliaton: FI UNAM
 image: images/photo.jpg
 role: graduate

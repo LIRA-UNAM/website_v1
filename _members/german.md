@@ -1,6 +1,6 @@
 ---
 name: German Alday
-image: images/photo.jpg
+image: images/german.jpg
 role: undergrad
 affiliation: UNAM
 group: alum
