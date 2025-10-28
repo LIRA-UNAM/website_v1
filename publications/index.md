@@ -9,11 +9,6 @@ nav:
 
 Explore research and publications from our undergraduate and graduate students.
 
-{% include section.html %}
-
-## Highlighted
-
-{% include citation.html lookup="Open collaborative writing with Manubot" style="rich" %}
 
 {% include section.html %}
 

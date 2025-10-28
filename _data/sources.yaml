@@ -1,23 +1,62 @@
-- id: doi:10.1371/journal.pcbi.1007128
+- id: doi:10.20965/jrm.2025.p0594
   type: paper
-  description: Lorem ipsum _dolor_ **sit amet**, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  date: 2020-12-4
-  image: https://journals.plos.org/ploscompbiol/article/figure/image?size=inline&id=info:doi/10.1371/journal.pcbi.1007128.g001&rev=2
-  buttons:
-    - type: manubot
-      link: https://greenelab.github.io/meta-review/
-    - type: source
-      text: Manuscript Source
-      link: https://github.com/greenelab/meta-review
-    - type: website
-      link: http://manubot.org/
-  tags:
-    - open science
-    - collaboration
-  repo: greenelab/meta-review
+  description: 
+  date: 2025-06-20
+  image: images/paper2.png
 
-- id: doi:10.1016/j.csbj.2020.05.017
-  image: https://ars.els-cdn.com/content/image/1-s2.0-S2001037020302804-gr1.jpg
+- id: doi:10.1007/978-3-031-22419-5_31
+  image: images/paper9.png
 
-- id: doi:10.7554/eLife.32822
-  image: https://iiif.elifesciences.org/lax:32822%2Felife-32822-fig8-v3.tif/full/863,/0/default.webp
+- id: doi:10.1080/08839514.2024.2304942
+  image: images/paper3.png
+
+- id: doi:10.1016/j.isatra.2023.07.037
+  image: images/paper4.png
+
+- id: doi:10.1007/978-3-031-43111-1_4
+  image: images/paper5.png
+
+- id: doi:10.1080/01691864.2022.2114296
+  image: images/paper7.png
+
+- id: doi:10.1109/case49997.2022.9926680
+  image: images/paper8.png
+
+- id: doi:10.1016/j.robot.2019.01.007
+  image: images/paper10.png
+
+- id: doi:10.15622/sp.60.1
+  image: images/paper11.png
+
+- id: doi:10.21203/rs.3.rs-963629/v1
+  remove: true
+
+- id: doi:10.5220/0010229306980707
+  remove: true
+
+- id: doi:10.20965/jrm.2025.p0579
+  type: paper
+  image: images/paper1.png
+
+- id: doi:10.1109/PAHCE.2009.5158382
+  remove: true
+
+- id: doi:10.1109/ICVR.2009.5174234
+  remove: true
+
+- id: doi:10.1109/PAHCE.2010.5474568
+  remove: true
+
+- id: doi:10.3182/20120829-3-mx-2028.00205
+  remove: true
+
+- id: doi:10.1007/978-3-319-08338-4_17
+  remove: true
+
+- id: doi:10.1109/ICARSC.2016.29
+  remove: true
+
+- id: doi:10.1051/matecconf/201816103011
+  remove: true
+  
+

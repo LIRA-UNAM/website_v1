@@ -51,15 +51,15 @@ You can contact us by email or phone, or visit us on the ground floor of Buildin
 
 {% capture col1 %}
 <div style="font-size: 0.9em;">
-Universidad Nacional Autónoma de México <br>
-Av. Universidad 3000, Ciudad Universitaria, Coyoacán, Cd. Mx., CP 04510  
+<a href="https://www.unam.mx/">Universidad Nacional Autónoma de México<br></a>
+Av. Universidad 3000, Ciudad Universitaria, Coyoacán, Cd. Mx., CP 04510
 </div>
 {% endcapture %}
  
 
 {% capture col2 %}
 <div style="font-size: 0.9em;"> 
-Facultad de Ingeniería <br>
+<a href="https://www.ingenieria.unam.mx/">Facultad de Ingeniería </a><br>
 Av. Universidad 3000, Ciudad Universitaria, Coyoacán, Cd. Mx., CP 04510  <br>
 email: fainge@unam.mx
 </div>
@@ -67,8 +67,8 @@ email: fainge@unam.mx
 
 {% capture col3 %}
 <div style="font-size: 0.9em;">
-Posgrado de Ingeniería Eléctrica
-Edificio S – “Bernardo Quintana Arrioja”, Primer Piso, Facultad de Ingeniería, Cd. Universitaria, Cd. Mx. C.P. 04510.
+<a href="http://posgrado.electrica.unam.mx/">Posgrado de Ingeniería Eléctrica</a><br>
+Edificio S – “Bernardo Quintana Arrioja”, Primer Piso, FI, Cd. Universitaria, Cd. Mx. C.P. 04510.
 email: ingenieria.electrica@posgrado.unam.mx
 </div>
 

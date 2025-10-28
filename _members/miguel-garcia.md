@@ -2,7 +2,7 @@
 name: Miguel Garcia
 image: images/photo.jpg
 role: undergrad
-affiliation: UNAM
+affiliation: FI-UNAM
 aliases:
   - J. Smith
   - J Smith

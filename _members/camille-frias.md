@@ -2,7 +2,7 @@
 name: Camille Frias
 image: images/camille.jpg
 role: undergrad
-affiliation: UNAM
+affiliation: FI-UNAM
 group: alum
 links:
   github: 

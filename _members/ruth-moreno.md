@@ -2,7 +2,7 @@
 name: Ruth Moreno
 image: images/photo.jpg
 role: undergrad
-description: Computer Vision
+affiliation: FI-UNAM
 links:
   email: sarah.johnson@gmail.com
   twitter: sarahjohnson

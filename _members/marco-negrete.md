@@ -1,8 +1,8 @@
 ---
 name: Marco Negrete
-affiliaton: Ingeniería - UNAM
-image: images/photo.jpg
+image: images/marco.jpg
 role: professor
+affiliation: FI - UNAM
 group: alum
 links:
   github: 

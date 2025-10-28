@@ -12,7 +12,7 @@ links:
   orcid: 0000-0001-8713-9213
   google-scholar: ETJoidYAAAAJ
   github: LIRA-UNAM
-  youtube: LIRA
+  youtube: "@LIRA-UNAM"
 
 ### jekyll settings
 
@@ -70,3 +70,5 @@ exclude:
   - README.md
   - LICENSE.md
   - CITATION.cff
+
+baseurl: "/lira-admin"

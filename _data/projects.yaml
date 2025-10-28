@@ -1,24 +1,24 @@
-- title: Cool Dataset
-  subtitle: a subtitle
+- title: Humanoid Kid Size
+  subtitle:
+  group: featured
+  image: images/nimbro.png
+  link: https://github.com/
+  description: Lorem ipsum _dolor sit amet_, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  repo: greenelab/lab-website-template
+  tags:
+    - humanoid
+
+- title: Humanoid Adult Size
+  subtitle: 
   group: featured
   image: images/photo.jpg
   link: https://github.com/
   description: Lorem ipsum _dolor sit amet_, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
   repo: greenelab/lab-website-template
   tags:
-    - resource
+    - humanoid
 
-- title: Cool Package
-  subtitle: a subtitle
-  group: featured
-  image: images/photo.jpg
-  link: https://github.com/
-  description: Lorem ipsum _dolor sit amet_, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  repo: greenelab/lab-website-template
-  tags:
-    - resource
-
-- title: Cool Tutorial
+- title: Autonomous drones
   subtitle: a subtitle
   image: images/photo.jpg
   link: https://github.com/
@@ -28,7 +28,7 @@
     - resource
     - publication
 
-- title: Cool Web App
+- title: Service robots
   subtitle: a subtitle
   image: images/photo.jpg
   link: https://github.com/
