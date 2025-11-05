@@ -2,7 +2,7 @@
 name: Miriam Velázquez
 image: images/photo.jpg
 role: graduate
-affiliation: FI-UNAM
+affiliation: Ingeniería - UNAM
 group: alum
 links:
   github: 

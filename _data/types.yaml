@@ -16,7 +16,7 @@ phd:
 
 undergrad:
   icon: fa-solid fa-user-graduate
-  description: Undergraduate Student
+  description: Undergraduate
 
 graduate:
   icon: fa-solid fa-user-graduate

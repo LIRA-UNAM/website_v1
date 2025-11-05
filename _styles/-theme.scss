@@ -3,7 +3,7 @@
 
 // colors
 [data-dark="false"] {
-  --primary: #0795d9;
+  --primary: #004364;
   --secondary: #7dd3fc;
   --text: #000000;
   --background: #ffffff;
@@ -27,9 +27,9 @@
 
 :root {
   // font families
-  --title: "Barlow", sans-serif;
-  --heading: "Barlow", sans-serif;
-  --body: "Barlow", sans-serif;
+  --title: "Consolas", ui-monospace;
+  --heading: "Consolas", ui-monospace;
+  --body: "Consolas", sans-serif;
   --code: "Roboto Mono", monospace;
 
   // font sizes
@@ -44,8 +44,8 @@
   --bold: 600;
 
   // text line spacing
-  --spacing: 2;
-  --compact: 1.5;
+  --spacing: 1.2;
+  --compact: 1;
 
   // effects
   --rounded: 3px;

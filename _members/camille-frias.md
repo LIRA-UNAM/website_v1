@@ -1,8 +1,8 @@
 ---
 name: Camille Frias
-image: images/camille.jpg
+image: images/members/camille.jpeg
 role: undergrad
-affiliation: FI-UNAM
+affiliation: Ingeniería - UNAM
 group: alum
 links:
   github: 

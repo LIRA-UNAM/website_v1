@@ -2,7 +2,7 @@
 name: Joel Gago
 image: images/joel.png
 role: graduate
-affiliation: FI-UNAM
+affiliation: Ingeniería - UNAM
 group: alum
 links:
   github: 

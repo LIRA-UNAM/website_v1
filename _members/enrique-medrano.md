@@ -2,7 +2,7 @@
 name: Enrique Medrano
 image: images/kike.png
 role: undergrad
-affiliation: FI-UNAM
+affiliation: Ingeniería - UNAM
 group: alum
 links:
   github: 

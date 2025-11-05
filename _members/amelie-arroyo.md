@@ -2,7 +2,7 @@
 name: Amelie Arroyo
 image: images/amelie.png
 role: undergrad
-affiliation: FP-UNAM
+affiliation: Psicología UNAM
 group: alum
 links:
   github: 

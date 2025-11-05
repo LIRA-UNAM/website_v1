@@ -1,8 +1,8 @@
 ---
 name: Julio Valdez
-image: images/photo.jpg
+image: images/members/julio.jpeg
 role: undergrad
-affiliation: FI-UNAM
+affiliation: Ingeniería - UNAM
 group: alum
 links:
   github: 

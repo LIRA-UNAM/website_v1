@@ -7,9 +7,6 @@ nav:
 
 # {% include icon.html icon="fa-solid fa-microscope" %}Publications
 
-Explore research and publications from our undergraduate and graduate students.
-
-
 {% include section.html %}
 
 ## All

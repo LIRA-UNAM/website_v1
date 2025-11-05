@@ -2,7 +2,7 @@
 name: Samuel Estrada
 image: images/photo.jpg
 role: undergrad
-affiliation: FI-UNAM
+affiliation: Ingeniería - UNAM
 group: alum
 links:
   github: 

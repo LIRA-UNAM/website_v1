@@ -1,8 +1,8 @@
 ---
 name: German Alday
 image: images/german.jpg
-role: undergrad
-affiliation: FI-UNAM
+role: graduate
+affiliation: Ingeniería - UNAM
 group: alum
 links:
   github: 
