@@ -6,9 +6,9 @@ professor:
   icon: fa-solid fa-microscope
   description: Research Professor
 
-postdoc:
+external:
   icon: fa-solid fa-glasses
-  description: Postdoctoral Researcher
+  description: External Collaborator
 
 phd:
   icon: fa-solid fa-graduation-cap

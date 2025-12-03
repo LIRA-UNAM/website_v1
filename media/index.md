@@ -1,11 +1,11 @@
 ---
-title: Media
+title: Blog
 nav:
   order: 4
   tooltip: Gallery and miscellany
 ---
 
-# {% include icon.html icon="fa-solid fa-feather-pointed" %}Media
+# {% include icon.html icon="fa-solid fa-feather-pointed" %}Blog
 
 Learn about the events and conferences where our team has shared research and innovation.
 

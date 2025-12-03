@@ -1,7 +1,7 @@
 ---
 name: Itzel González
 image: images/photo.jpg
-role: programmer
+role: undergrad
 affiliation: Ingeniería - UNAM
 group: alum
 links:
