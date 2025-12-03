@@ -1,6 +1,6 @@
 ---
 name: German Alday
-image: images/german.jpg
+image: images/members/german.jpg
 role: graduate
 affiliation: Ingeniería - UNAM
 group: alum

@@ -1,6 +1,6 @@
 ---
 name: Sebastián García
-image: images/sebastian.png
+image: images/members/sebas.jpeg
 role: undergrad
 affiliation: Ingeniería - UNAM
 group: alum
