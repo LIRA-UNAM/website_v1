@@ -12,10 +12,10 @@ You can contact us by email or phone, or visit us on the ground floor of Buildin
 <br>
 
 {%
-  include button.html
+  include button-copy.html
   type="email"
-  text="lir.pumas@gmail.com"
-  link="lir.pumas@gmail.com"
+  text="lira@ingenieria.unam.edu"
+  link="lira@ingenieria.unam.edu"
 %}
 {%
   include button.html
