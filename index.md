@@ -26,24 +26,35 @@ LIRA is a research laboratory founded within the School of Engineering at the Na
 
 {% capture text %}
 
-Discover our latest research publications and scientific contributions.
+Watch our official qualification video, technical documentation, and scientific contributions related to the RoboCup 2026.
 
+<div>
 {%
   include button.html
-  link="publications"
-  text="See our publications"
+  link="https://www.youtube.com/watch?v=PuhMLxUxA8w"
+  text="RoboCup Qualification Video"
   icon="fa-solid fa-arrow-right"
   flip=true
   style="bare"
 %}
-
+</div>
+<div style="margin-top: 3px;">
+{%
+  include button.html
+  link="publications"
+  text="Publications"
+  icon="fa-solid fa-arrow-right"
+  flip=true
+  style="bare"
+%}
+</div>
 {% endcapture %}
 
 {%
   include feature.html
-  image="images/publications.png"
-  link="research"
-  title="Our Research"
+  image="images/robocup.jpg"
+  link="https://www.youtube.com/watch?v=PuhMLxUxA8w"
+  title="Qualifications material for RoboCup 2026"
   text=text
 %}
 

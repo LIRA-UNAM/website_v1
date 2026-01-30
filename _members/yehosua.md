@@ -1,6 +1,6 @@
 ---
 name: Yehosua Orihuela
-image: images/photo.jpg
+image: images/members/luis.jpg
 role: undergrad
 affiliation: Ingeniería - UNAM
 group: alum
