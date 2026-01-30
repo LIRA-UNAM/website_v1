@@ -12,7 +12,7 @@
   subtitle: Adult Size
   group: featured
   image: images/adult_size.jpg
-  link: /humanoid/adult-size/
+  link: /adult-size/
   description: Humanoid soccer-playing robots larger than one meter in height and heavier than twenty-five kilograms. We have one Unitree G1 and one Booster T1, and we are currently developing our own platform.
   repo: greenelab/lab-website-template
   tags:
