@@ -1,6 +1,6 @@
 ---
 name: Daniel Rioja
-image: images/photo.jpg
+image: images/members/daniel.jpg
 role: undergrad
 affiliation: Ingeniería - UNAM
 group: alum

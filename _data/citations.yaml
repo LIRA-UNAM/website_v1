@@ -53,10 +53,14 @@
   file: sources.yaml
   image: images/paper3.png
 - id: doi:10.1016/j.isatra.2023.07.037
-  title: "Trajectory tracking nonlinear <mml:math xmlns:mml=\"http://www.w3.org/1998/Math/MathML\"\
-    \ altimg=\"si230.svg\" display=\"inline\" id=\"d1e1524\"><mml:msub><mml:mrow><mml:mi>H</mml:mi></mml:mrow><mml:mrow><mml:mi>\u221E\
-    </mml:mi></mml:mrow></mml:msub></mml:math> controller for wheeled mobile robots\
-    \ with disturbances observer"
+  title: "Trajectory tracking nonlinear\n                    <mml:math xmlns:mml=\"\
+    http://www.w3.org/1998/Math/MathML\" altimg=\"si230.svg\" display=\"inline\" id=\"\
+    d1e1524\">\n                      <mml:msub>\n                        <mml:mrow>\n\
+    \                          <mml:mi>H</mml:mi>\n                        </mml:mrow>\n\
+    \                        <mml:mrow>\n                          <mml:mi>\u221E\
+    </mml:mi>\n                        </mml:mrow>\n                      </mml:msub>\n\
+    \                    </mml:math>\n                    controller for wheeled mobile\
+    \ robots with disturbances observer"
   authors:
   - "Jes\xFAs A. Rodr\xEDguez-Arellano"
   - Roger Miranda-Colorado

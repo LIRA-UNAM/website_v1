@@ -1,6 +1,6 @@
 ---
 name: Amelie Arroyo
-image: images/amelie.png
+image: images/members/amelie.png
 role: undergrad
 affiliation: Psicología UNAM
 group: alum

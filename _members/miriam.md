@@ -6,4 +6,5 @@ affiliation: Ingeniería - UNAM
 group: alum
 links:
   github: 
+  email: miriamvm.410@gmail.com
 ---

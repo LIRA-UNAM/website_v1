@@ -1,6 +1,6 @@
 ---
 name: Dr. Marco Negrete
-image: images/marco.jpg
+image: images/members/marco.jpg
 role: professor
 affiliation: FI - UNAM
 group: alum

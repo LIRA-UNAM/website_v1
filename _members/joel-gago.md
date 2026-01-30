@@ -1,6 +1,6 @@
 ---
 name: Joel Gago
-image: images/joel.png
+image: images/members/joel.png
 role: graduate
 affiliation: Ingeniería - UNAM
 group: alum
