@@ -38,6 +38,18 @@ Watch our official qualification video, technical documentation, and scientific 
   style="bare"
 %}
 </div>
+
+<div style="margin-top: 3px;">
+{%
+  include button.html
+  link="https://github.com/LIRA-UNAM/TDP-Pumas-Humanoids/blob/main/main.pdf"
+  text="Team Description Paper"
+  icon="fa-solid fa-arrow-right"
+  flip=true
+  style="bare"
+%}
+</div>
+
 <div style="margin-top: 3px;">
 {%
   include button.html
