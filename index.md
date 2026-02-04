@@ -60,6 +60,16 @@ Watch our official qualification video, technical documentation, and scientific 
   style="bare"
 %}
 </div>
+<div style="margin-top: 3px;">
+{%
+  include button.html
+  link="adult-size"
+  text="Read more about our humanoid robots"
+  icon="fa-solid fa-arrow-right"
+  flip=true
+  style="bare"
+%}
+</div>
 {% endcapture %}
 
 {%
