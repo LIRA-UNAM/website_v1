@@ -1,6 +1,6 @@
 ---
 name: David Santoyo
-image: images/photo.jpg
+image: images/fallback.png
 role: external
 affiliation: Instituto de Ingeniería
 group: alum

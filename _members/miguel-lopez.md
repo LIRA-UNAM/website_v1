@@ -1,6 +1,6 @@
 ---
 name: Miguel López
-image: images/photo.jpg
+image: images/fallback.png
 role: graduate
 affiliation: FCE-BUAP
 group: alum

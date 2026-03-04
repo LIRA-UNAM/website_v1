@@ -11,9 +11,12 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 20px;
-  width: 175px;
+  margin: 5px;
+  width: 15rem;
+  background: var(--overlay);
+  color: var(--primary);
   max-width: calc(100% - 20px - 20px);
+  padding: 10px;
   text-decoration: none;
 }
 
@@ -26,6 +29,8 @@
   gap: 15px;
   width: unset;
   text-align: left;
+  background: var(--overlay);
+
 }
 
 .portrait .icon {
@@ -55,8 +60,8 @@
 .portrait-image {
   width: 100%;
   margin-bottom: 20px;
-  aspect-ratio: 5 / 6;
-  border-radius: 25px;
+  aspect-ratio: 1 / 1;
+  // border-radius: 25px;
   object-fit: cover;
   box-shadow: var(--shadow);
 }

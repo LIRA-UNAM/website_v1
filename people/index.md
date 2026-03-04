@@ -15,5 +15,5 @@ nav:
 # {% include icon.html icon="fa-solid fa-graduation-cap" %}Undergraduate Students
 {% include list.html data="members" component="portrait" filter="role == 'undergrad'" %}
 
-# Outside Collaborators
+# Past Alumni
 {% include list.html data="members" component="portrait" filter="role == 'external'" %}

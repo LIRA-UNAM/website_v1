@@ -1,6 +1,6 @@
 ---
 name: Miriam Velázquez
-image: images/photo.jpg
+image: images/fallback.png
 role: graduate
 affiliation: Ingeniería - UNAM
 group: alum

@@ -1,6 +1,6 @@
 ---
 name: Samuel Estrada
-image: images/photo.jpg
+image: images/fallback.png
 role: undergrad
 affiliation: Ingeniería - UNAM
 group: alum
