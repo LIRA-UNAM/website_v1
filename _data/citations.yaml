@@ -1,5 +1,18 @@
 # DO NOT EDIT, GENERATED AUTOMATICALLY
 
+- id: doi:10.1007/s10846-026-02370-4
+  title: Stochastic Robot Behaviors through Hidden Markov Models with Inputs and Outputs
+  authors:
+  - Jesus Savage
+  - David A. Rosenblueth
+  - "Stan Mu\xF1oz Guti\xE9rrez"
+  - Marco Negrete
+  publisher: Journal of Intelligent &amp; Robotic Systems
+  date: '2026-04-06'
+  link: https://doi.org/hbwvns
+  orcid: 0000-0002-5468-2807
+  plugin: orcid.py
+  file: orcid.yaml
 - id: doi:10.20965/jrm.2025.p0594
   title: Complex Task Planning for General-Purpose Service Robots
   authors:
