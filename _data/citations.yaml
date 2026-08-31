@@ -1,5 +1,27 @@
 # DO NOT EDIT, GENERATED AUTOMATICALLY
 
+- id: doi:10.3390/e28050577
+  title: 'Causal Structure Learning Assumptions Shape Counterfactual Safety: Expert-Guided
+    Constraints vs. Data-Driven DAGs with Probabilistic Logic Twin Networks'
+  authors:
+  - "H\xE9ctor Avil\xE9s"
+  - Ingridh Gracia
+  - Rafael Kiesel
+  - "Ver\xF3nica Rodr\xEDguez"
+  - "Rub\xE9n Machucho"
+  - Alberto Reyes
+  - Marco Negrete
+  - "Gabriel Ram\xEDrez"
+  - "Nicol\xE1s Lu\xE9vano"
+  - "Myriam Peque\xF1o"
+  - "Jes\xFAs Medrano"
+  - "Felix Weitk\xE4mper"
+  publisher: Entropy
+  date: '2026-05-21'
+  link: https://doi.org/hb5f9z
+  orcid: 0000-0002-5468-2807
+  plugin: orcid.py
+  file: orcid.yaml
 - id: doi:10.1007/s10846-026-02370-4
   title: Stochastic Robot Behaviors through Hidden Markov Models with Inputs and Outputs
   authors:
