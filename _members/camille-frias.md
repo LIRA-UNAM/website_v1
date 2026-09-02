@@ -1,7 +1,7 @@
 ---
 name: Camille Frias
 image: images/members/camille.jpeg
-role: undergrad
+role: graduate
 affiliation: Ingeniería - UNAM
 group: alum
 links:

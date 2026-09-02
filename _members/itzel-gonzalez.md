@@ -1,7 +1,7 @@
 ---
 name: Itzel González
 image: images/fallback.png
-role: undergrad
+role: external
 affiliation: Ingeniería - UNAM
 group: alum
 links:
