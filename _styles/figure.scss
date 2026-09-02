@@ -15,12 +15,14 @@
 }
 
 .figure-image img {
+  border: solid 1px var(--light-gray);
   border-radius: var(--rounded);
   overflow: hidden;
-  box-shadow: var(--shadow);
 }
 
 .figure-caption {
+  color: var(--dark-gray);
+  font-size: 0.9rem;
   font-style: italic;
   text-align: center;
 }

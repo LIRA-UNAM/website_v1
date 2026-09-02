@@ -17,7 +17,13 @@
   color: var(--primary);
   max-width: calc(100% - 20px - 20px);
   padding: 10px;
+  border-radius: var(--rounded);
   text-decoration: none;
+  transition: background var(--transition);
+}
+
+.portrait:hover {
+  background: var(--light-gray);
 }
 
 .portrait[data-style="small"] {
@@ -61,9 +67,9 @@
   width: 100%;
   margin-bottom: 20px;
   aspect-ratio: 1 / 1;
-  // border-radius: 25px;
+  border: solid 1px var(--light-gray);
+  border-radius: var(--rounded);
   object-fit: cover;
-  box-shadow: var(--shadow);
 }
 
 .portrait[data-style="tiny"] .portrait-image {

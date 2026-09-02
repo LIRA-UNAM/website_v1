@@ -1,0 +1,45 @@
+{% assign news_url = include.link | default: include.url %}
+{{ " " }}
+<div class="news-card">
+  <div class="news-card-content">
+    {% if include.date %}
+      <span class="news-card-date">{{ include.date | date: "%B %-d, %Y" }}</span>
+    {% endif %}
+
+    {% if include.title %}
+      <a
+        {% if news_url %}
+          href="{{ news_url | relative_url | uri_escape }}"
+        {% endif %}
+        class="news-card-title"
+      >
+        {{ include.title }}
+      </a>
+    {% endif %}
+
+    {% if include.description %}
+      <p class="news-card-description">
+        {{ include.description | markdownify | remove: "<p>" | remove: "</p>" }}
+      </p>
+    {% endif %}
+
+    {% if include.tags %}
+      {% include tags.html tags=include.tags link="/news" %}
+    {% endif %}
+  </div>
+
+  <a
+    {% if news_url %}
+      href="{{ news_url | relative_url | uri_escape }}"
+    {% endif %}
+    class="news-card-image"
+    aria-label="{{ include.title | default: "news image" | regex_strip }}"
+  >
+    <img
+      src="{{ include.image | relative_url | uri_escape }}"
+      alt="{{ include.title | default: "news image" | regex_strip }}"
+      loading="lazy"
+      {% include fallback.html %}
+    >
+  </a>
+</div>

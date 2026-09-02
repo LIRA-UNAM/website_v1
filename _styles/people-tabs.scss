@@ -1,0 +1,61 @@
+---
+---
+
+.people-tabs {
+  display: flex;
+  flex-direction: column;
+}
+
+.people-tabs-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.people-tabs-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.people-tabs-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border: solid 1px var(--light-gray);
+  border-radius: var(--rounded);
+  color: var(--primary);
+  font-family: var(--heading);
+  font-weight: var(--semi-bold);
+  font-size: 0.95rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+
+.people-tabs-label:hover {
+  background: var(--overlay);
+}
+
+.people-tabs-count {
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--overlay);
+  font-size: 0.8rem;
+  font-weight: var(--regular);
+}
+
+.people-tabs-panel {
+  display: none;
+  flex-wrap: wrap;
+}
+
+.people-tabs-input:focus-visible ~ .people-tabs-nav {
+  outline: solid 2px var(--primary);
+  outline-offset: 2px;
+  border-radius: var(--rounded);
+}

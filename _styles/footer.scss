@@ -1,19 +1,40 @@
 ---
 ---
 
+// flatten to a plain surface that follows the site's light/dark toggle;
+// the photographic treatment is reserved for the homepage hero
+footer.background {
+  --text: inherit;
+  --background: inherit;
+  --primary: inherit;
+  --secondary: inherit;
+  --light-gray: inherit;
+  --gray: inherit;
+  --dark-gray: inherit;
+  --overlay: inherit;
+  background: var(--background);
+  color: var(--dark-gray);
+}
+
+footer.background::before {
+  display: none;
+}
+
 footer {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  gap: 20px;
-  padding: 40px;
+  gap: 16px;
+  padding: 48px 24px;
+  border-top: solid 1px var(--light-gray);
+  font-size: 0.9rem;
   line-height: var(--spacing);
-  box-shadow: var(--shadow);
 }
 
 footer a {
-  color: var(--text) !important;
+  color: var(--dark-gray) !important;
+  transition: color var(--transition);
 }
 
 footer a:hover {
@@ -21,5 +42,5 @@ footer a:hover {
 }
 
 footer .icon {
-  font-size: var(--xl);
+  font-size: var(--large);
 }

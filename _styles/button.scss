@@ -16,8 +16,8 @@ button {
   gap: 10px;
   max-width: calc(100% - 5px - 5px);
   margin: 5px;
-  padding: 8px 15px;
-  border: none;
+  padding: 9px 18px;
+  border: solid 1px transparent;
   border-radius: var(--rounded);
   background: var(--primary);
   color: var(--background);
@@ -25,24 +25,25 @@ button {
   font: inherit;
   font-family: var(--heading);
   font-weight: var(--semi-bold);
+  font-size: 0.95rem;
   text-decoration: none;
   vertical-align: middle;
   appearance: none;
-  transition: background var(--transition), color var(--transition);
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
 }
 
 .button:hover {
-  background: var(--text);
-  color: var(--background);
+  background: var(--primary-hover);
 }
 
 .button[data-style="bare"] {
   padding: 5px;
+  border: none;
   background: none;
   color: var(--primary);
 
   &:hover {
-    color: var(--text);
+    color: var(--primary-hover);
   }
 }
 

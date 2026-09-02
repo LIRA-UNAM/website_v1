@@ -15,10 +15,8 @@ layout: default
   tags=page.tags
 %}
 
+{% include post-nav.html post=page %}
+
 {% include section.html %}
 
 {{ content }}
-
-{% include section.html %}
-
-{% include post-nav.html post=page %}

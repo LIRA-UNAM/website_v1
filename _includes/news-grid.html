@@ -1,0 +1,24 @@
+{%- comment -%}
+  renders the latest items from the `news` collection as a grid of cards.
+
+  usage:
+    {% include news-grid.html %}
+    {% include news-grid.html limit=3 %}
+{%- endcomment -%}
+
+{% assign news_items = site.news | sort: "date" | reverse %}
+
+<div class="grid" data-style="{{ include.style }}">
+  {% for item in news_items limit: include.limit %}
+    {%
+      include news-card.html
+      title=item.title
+      image=item.image
+      date=item.date
+      description=item.description
+      link=item.link
+      url=item.url
+      tags=item.tags
+    %}
+  {% endfor %}
+</div>

@@ -11,9 +11,15 @@ $wrap: 800px;
 .post-excerpt {
   display: flex;
   margin: 20px 0;
+  border: solid 1px var(--light-gray);
   border-radius: var(--rounded);
   background: var(--background);
   overflow: hidden;
+  transition: box-shadow var(--transition), border-color var(--transition);
+}
+
+.post-excerpt:hover {
+  border-color: var(--gray);
   box-shadow: var(--shadow);
 }
 

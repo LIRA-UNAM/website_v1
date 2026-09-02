@@ -3,39 +3,41 @@
 
 // colors
 [data-dark="false"] {
-  --primary: #004364;
-  --secondary: #7dd3fc;
-  --text: #000000;
+  --primary: #1d2556;
+  --primary-hover: #333f85;
+  --secondary: #ab8a3f;
+  --text: #1a1a1a;
   --background: #ffffff;
-  --background-alt: #fafafa;
-  --light-gray: #e0e0e0;
-  --gray: #808080;
-  --dark-gray: #404040;
-  --overlay: #00000020;
+  --background-alt: #f7f7f8;
+  --light-gray: #e2e4e8;
+  --gray: #72777d;
+  --dark-gray: #454a50;
+  --overlay: #00000016;
 }
 [data-dark="true"] {
-  --primary: #0795d9;
-  --secondary: #075985;
-  --text: #ffffff;
-  --background: #000e1e;
-  --background-alt: #000e1e;
-  --light-gray: #404040;
-  --gray: #808080;
-  --dark-gray: #b0b0b0;
+  --primary: #7c8ad4;
+  --primary-hover: #97a3dd;
+  --secondary: #d4b876;
+  --text: #f2f3f4;
+  --background: #0c1220;
+  --background-alt: #101828;
+  --light-gray: #263041;
+  --gray: #8990a0;
+  --dark-gray: #c3c8ce;
   --overlay: #ffffff10;
 }
 
 :root {
   // font families
-  --title: "Google Sans", sans-serif;
-  --heading: "Google Sans", sans-serif;
-  --body: "Noto Sans", sans-serif;
+  --title: "Inter", sans-serif;
+  --heading: "Inter", sans-serif;
+  --body: "Inter", sans-serif;
   --code: "Roboto Mono", monospace;
 
   // font sizes
   --large: 1.2rem;
   --xl: 2rem;
-  --xxl: 5rem;
+  --xxl: clamp(1.75rem, 1rem + 3.5vw, 3.25rem);
 
   // font weights
   --thin: 200;
@@ -44,11 +46,11 @@
   --bold: 600;
 
   // text line spacing
-  --spacing: 1.2;
-  --compact: 1;
+  --spacing: 1.55;
+  --compact: 1.15;
 
   // effects
-  --rounded: 3px;
-  --shadow: 0 0 10px 0 var(--overlay);
+  --rounded: 8px;
+  --shadow: 0 1px 2px var(--overlay), 0 8px 24px var(--overlay);
   --transition: 0.2s ease;
 }

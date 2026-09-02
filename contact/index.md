@@ -32,19 +32,43 @@ You can contact us by email or phone, or visit us on the ground floor of Buildin
 
 {% include section.html %}
 
-{% capture col1 %}
+## Colabora con nosotros
 
+{%
+  include card.html
+  image="images/unam.png"
+  title="Servicio Social"
+  description="Ofrecemos plazas de servicio social para estudiantes de la UNAM interesados en robótica, visión computacional e inteligencia artificial. Escríbenos para conocer los proyectos disponibles y los requisitos de inscripción."
+  style="medium"
+%}
+{%
+  include card.html
+  image="images/team.jpg"
+  title="Estancias de Investigación"
+  description="Recibimos estudiantes de otras universidades, nacionales e internacionales, interesados en realizar una estancia de investigación en el laboratorio. Cuéntanos tu perfil académico y tu área de interés."
+  style="medium"
+%}
+{%
+  include card.html
+  image="images/icon.png"
+  title="Patrocinadores"
+  description="Buscamos empresas e instituciones interesadas en patrocinar nuestros proyectos de robótica y nuestra participación en competencias internacionales como la RoboCup. Contáctanos para conocer las opciones de colaboración."
+  style="medium"
+%}
 
+{% include section.html %}
 
-{% endcapture %}
+## Ubicación
 
-{% capture col2 %}
-
-
-
-{% endcapture %}
-
-{% include cols.html col1=col1 col2=col2 %}
+<iframe
+  src="https://www.google.com/maps?q=19.328473,-99.182140&z=17&output=embed"
+  width="100%"
+  height="450"
+  style="border: 0; border-radius: var(--rounded);"
+  allowfullscreen=""
+  loading="lazy"
+  referrerpolicy="no-referrer-when-downgrade"
+></iframe>
 
 {% include section.html dark=true %}
 

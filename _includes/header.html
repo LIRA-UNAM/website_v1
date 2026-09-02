@@ -64,3 +64,13 @@
     oninput="onDarkToggleChange(event)"
   >
 </header>
+{% if page.url == "/" %}
+  {% comment %}
+    reserves the hero header's space in the document flow, since the
+    header itself is taken out of flow (position: fixed) so it can shrink
+    into the nav bar on scroll without fighting the scroll position (see
+    the comments in _styles/header.scss for why this needs its own,
+    different-looking height formula from the header's)
+  {% endcomment %}
+  <div class="hero-spacer" aria-hidden="true"></div>
+{% endif %}

@@ -13,8 +13,9 @@ header {
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
-  padding: 20px;
-  box-shadow: var(--shadow);
+  padding: 16px 24px;
+  border-bottom: solid 1px var(--light-gray);
+  transition: border-color var(--transition), background var(--transition);
 
   @if $sticky {
     position: sticky !important;
@@ -49,10 +50,10 @@ header a {
 
 .title-text {
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 5px;
+  align-items: flex-start;
+  gap: 0;
   min-width: 0;
   font-family: var(--title);
   text-align: left;
@@ -100,20 +101,44 @@ nav {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 4px;
   font-family: var(--heading);
-  text-transform: uppercase;
+  font-weight: var(--semi-bold);
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
 }
 
 nav > a {
-  padding: 5px;
+  padding: 8px 10px;
+  border-radius: var(--rounded);
+  transition: background var(--transition), color var(--transition);
 }
 
 nav > a:hover {
+  background: var(--overlay);
   color: var(--primary);
 }
 
-header:not([data-big]) {
+header:not([data-big]),
+header[data-compact] {
+  // flatten the persistent nav bar to a plain surface that follows the
+  // site's light/dark toggle; the photographic treatment is reserved
+  // for the homepage hero only
+  --text: inherit;
+  --background: inherit;
+  --primary: inherit;
+  --primary-hover: inherit;
+  --secondary: inherit;
+  --light-gray: inherit;
+  --gray: inherit;
+  --dark-gray: inherit;
+  --overlay: inherit;
+  background: var(--background);
+
+  &::before {
+    display: none;
+  }
+
   @media (max-width: $collapse) {
     justify-content: flex-end;
 
@@ -137,37 +162,86 @@ header:not([data-big]) {
   }
 }
 
+// compact height the big header shrinks to once fully scrolled, and the
+// distance (px) of scroll it shrinks over - must match the `distance`
+// constant in _scripts/header-shrink.js
+$compact-height: 80px;
+$shrink-distance: 320px;
+
+:root {
+  // 0 (top of page) -> 1 (fully scrolled); driven by _scripts/header-shrink.js
+  --shrink: 0;
+}
+
+// header[data-big] is taken out of flow (position: fixed) rather than
+// staying sticky: a *sticky* element that resizes itself based on the very
+// scroll position that sizing is derived from is a known trap - Chrome
+// fights it, producing a scrollY tug-of-war/oscillation (confirmed here:
+// scroll events firing dozens of times per gesture with scrollY bouncing
+// between ~0 and 1000+). A fixed element sidesteps that entirely, at the
+// cost of needing .hero-spacer below to reserve its document-flow space
+// and keep it in sync - see the comment there for why its height formula
+// looks different from this one despite driving the same visual effect
 header[data-big] {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+
+  // sizing stays driven by --shrink across the whole 0 -> 1 range,
+  // regardless of which layout branch (below) is active, so the column ->
+  // row layout swap happens mid-motion instead of as a size-mismatched snap
+  height: calc(100vh - var(--shrink) * (100vh - #{$compact-height}));
+
+  .logo {
+    height: calc(#{$logo-big} - var(--shrink) * #{$logo-big - $logo});
+    flex-shrink: 0;
+  }
+
+  .title {
+    font-size: calc(var(--xxl) - var(--shrink) * (var(--xxl) - var(--large)));
+  }
+
+  .subtitle {
+    opacity: calc(0.8 - var(--shrink) * 0.8);
+  }
+}
+
+header[data-big]:not([data-compact]) {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  min-height: 100vh;
-
-  @if $sticky {
-    top: unset;
-  }
 
   .home {
     flex-direction: column;
     flex-grow: 0;
   }
 
-  .logo {
-    height: $logo-big;
-    flex-shrink: 0;
-  }
-
   .title-text {
-    flex-direction: column;
     align-items: center;
     text-align: center;
   }
+}
 
-  .title {
-    font-size: var(--xxl);
-  }
-
-  .subtitle {
-    font-size: var(--large);
-  }
+// .hero-spacer reserves the fixed header's document-flow space, and must
+// shrink in step with it or page content ends up positioned either under
+// the header (hidden) or with a gap above it. Its height can't just copy
+// the header's height formula though: the header's bottom edge in the
+// viewport is always exactly its own height (fixed elements don't move
+// with scroll), but the spacer's bottom edge is (its height - scrollY),
+// since it's a normal in-flow element that scrolls with the page. Solving
+// "spacer height - scrollY == header height" for the spacer's height
+// gives "header height + scrollY" - and since --shrink is just scrollY
+// capped at $shrink-distance and rescaled to 0..1, `scrollY` here is
+// `var(--shrink) * #{$shrink-distance}`
+.hero-spacer {
+  height: calc(
+    100vh -
+    var(--shrink) * (100vh - #{$compact-height} - #{$shrink-distance})
+  );
+  // without this, the browser's scroll anchoring tries to compensate for
+  // this element resizing above the fold by nudging scrollY itself, which
+  // re-triggers our scroll handler and creates a runaway feedback loop
+  overflow-anchor: none;
 }

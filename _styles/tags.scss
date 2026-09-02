@@ -14,21 +14,26 @@
 .tag {
   max-width: 100%;
   margin: 0;
-  padding: 5px 10px;
+  padding: 4px 12px;
+  border: solid 1px var(--light-gray);
   border-radius: 999px;
-  background: var(--secondary);
-  color: var(--text);
+  background: none;
+  color: var(--dark-gray);
+  font-size: 0.85rem;
   text-decoration: none;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  transition: background var(--transition), color var(--transition);
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
 }
 
 .tag:hover {
-  background: var(--light-gray);
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
 .tag[data-active] {
-  background: var(--light-gray);
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--background);
 }

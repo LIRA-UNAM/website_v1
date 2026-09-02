@@ -1,7 +1,7 @@
 ---
 name: Ruth Moreno
 image: images/members/ruth.jpeg
-role: undergrad
+role: graduate
 affiliation: Ingeniería - UNAM
 links:
   email: sarah.johnson@gmail.com

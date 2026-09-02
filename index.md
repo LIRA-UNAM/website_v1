@@ -4,7 +4,26 @@
 {:.left}
 ---
 
-LIRA is a research laboratory founded within the School of Engineering at the National Autonomous University of Mexico. We develop cutting-edge robotics, computer vision, locomotion, reinforcement learning, and humanoid robot interaction (HRI), with emphasis on humanoid robotics, UAVs, and related areas.
+
+{% capture info %}
+LIRA is a research lab. **We are NOT a student society or Agrupación Estudiantil. We do not have a recruitment process.** If you want to join the lab, you can contact us through email or pay a visit. More info in **[Contact](contact)** section.
+{% endcapture %}
+{% capture content %}**Info** {{ info }}{% endcapture %}
+{% include alert.html type="info" content=content %}
+
+
+{% capture content %}
+{% include figure.html image="images/blog/tmr25/darwin.gif" caption="Darwin2 learning to walk" width="200px" %}
+{% endcapture %}
+{% include float.html content=content %}
+LIRA is a research laboratory founded in 2023 at the **[National Autonomous University of Mexico](https://www.unam.mx/)**. We develop robotics and research computer vision, locomotion, reinforcement learning, and humanoid robot interaction (HRI), with emphasis on humanoid robotics, UAVs, and related areas.
+
+LIRA is run by bachelor and masters students from the School of Engineering. We come from Mechatronics, EE and Computer Engineering backgrounds. The lab is also available for visiting students, exchange students, researchers, UNAM social service, sponsors and whoever wants to get involved in robotics.
+The lab also publishes original research in the robotics field. Including computer vision, locomotion, navigation, localization and control. You can find all some of our research in the **[Publications](publications)** section.
+{% include float.html clear=true %}
+
+
+
 <br>
 <br>
 {%
@@ -24,106 +43,4 @@ LIRA is a research laboratory founded within the School of Engineering at the Na
 
 ## Highlights
 
-{% capture text %}
-
-Watch our official qualification video, technical documentation, and scientific contributions related to the RoboCup 2026.
-
-<div>
-{%
-  include button.html
-  link="https://www.youtube.com/watch?v=PuhMLxUxA8w"
-  text="RoboCup Qualification Video"
-  icon="fa-solid fa-arrow-right"
-  flip=true
-  style="bare"
-%}
-</div>
-
-<div style="margin-top: 3px;">
-{%
-  include button.html
-  link="https://github.com/LIRA-UNAM/TDP-Pumas-Humanoids/blob/main/main.pdf"
-  text="Team Description Paper"
-  icon="fa-solid fa-arrow-right"
-  flip=true
-  style="bare"
-%}
-</div>
-
-<div style="margin-top: 3px;">
-{%
-  include button.html
-  link="publications"
-  text="Publications"
-  icon="fa-solid fa-arrow-right"
-  flip=true
-  style="bare"
-%}
-</div>
-<div style="margin-top: 3px;">
-{%
-  include button.html
-  link="adult-size"
-  text="Read more about our humanoid robots"
-  icon="fa-solid fa-arrow-right"
-  flip=true
-  style="bare"
-%}
-</div>
-{% endcapture %}
-
-{%
-  include feature.html
-  image="images/robocup.jpg"
-  link="https://www.youtube.com/watch?v=PuhMLxUxA8w"
-  title="Qualifications material for RoboCup 2026"
-  text=text
-%}
-
-{% capture text %}
-
-Explore our current projects in robotics and intelligent systems.
-
-{%
-  include button.html
-  link="projects"
-  text="Browse our projects"
-  icon="fa-solid fa-arrow-right"
-  flip=true
-  style="bare"
-%}
-
-{% endcapture %}
-
-{%
-  include feature.html
-  image="images/projects.png"
-  link="projects"
-  title="Our Projects"
-  flip=true
-  style="bare"
-  text=text
-%}
-
-{% capture text %}
-
-Meet the minds behind our research and projects.
-
-{%
-  include button.html
-  link="people"
-  text="Meet our team"
-  icon="fa-solid fa-arrow-right"
-  flip=true
-  style="bare"
-%}
-
-{% endcapture %}
-
-{%
-  include feature.html
-  image="images/team.jpg"
-  link="people"
-  title="Our Team"
-  text=text
-%}
+{% include news-grid.html limit=6 %}

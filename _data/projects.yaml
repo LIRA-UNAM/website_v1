@@ -1,47 +1,67 @@
-- title: Humanoid
-  subtitle: Kid Size
+- title: Humanoid Robots
+  subtitle: Middle Size & Adult Size
   group: featured
   image: images/nimbro.png
-  link:
-  description: Humanoid autonomous robots, shorter than one meter in height, intended to play soccer games following FIFA rules. Our robots are currently built with Dynamixel motors, a Luckfox camera, and a Raspberry Pi.
-  repo: greenelab/lab-website-template
+  link: https://github.com/LIRA-UNAM/Pumanoids
+  description: Humanoid robots developed for research and competitions, including the RoboCup Humanoid Soccer League and RCAP Beijing Masters.
+  repo: LIRA-UNAM/Pumanoids
   tags:
     - humanoid
+    - software
+    - research
 
-- title: Humanoid 
-  subtitle: Adult Size
+- title: Drones & UAVs
   group: featured
-  image: images/adult_size.jpg
-  link: /adult-size/
-  description: Humanoid soccer-playing robots larger than one meter in height and heavier than twenty-five kilograms. We have one Unitree G1 and one Booster T1, and we are currently developing our own platform.
-  repo: greenelab/lab-website-template
-  tags:
-    - humanoid
-
-- title: Autonomous drones
-  subtitle:
+  subtitle: Unmanned Aerial Vehicles and Micro Air Vehicles
   image: images/dron.jpg
   link: 
-  description: Autonomous micro air vehicles for exploration, mapping, human recognition, and task planning.
+  description: Autonomous micro air vehicles for exploration, mapping, human recognition, and task planning. 
   repo: greenelab/lab-website-template
   tags:
-    - resource
-    - publication
+    - drones
+    - software
+    - hardware
 
 - title: Rover
-  subtitle:
-  image: images/rover.png
+  subtitle: Designed for outdoor exploration and Mars rover missions
+  group: featured
+  image: images/projects/rovers_team.jpg
   link: 
   description: Ground autonomous vehicles designed for outdoor exploration.
   repo: greenelab/lab-website-template
   tags:
+    - rovers
     - software
+    - hardware
 
-- title: Service robots
-  subtitle:
+- title: Mobile Robots Research
+  subtitle: Navigation, localization and path planning for autonomous robots on mobile bases and legged robots
   image: images/P-Ron.jpg
   link: 
   description: Autonomous robots intended to help humans with common daily tasks in environments such as homes or offices.
   repo: greenelab/lab-website-template
   tags:
     - software
+    - research
+
+- title: AutoModel Car
+  subtitle: Autonomous navigation for model cars and small vehicles on indoor and outdoor environments
+  image: images/fallback.png
+  link: 
+  description: Robotic arms and manipulation for industrial and service robots.
+  repo: greenelab/lab-website-template
+  tags:
+    - robotic arms
+    - software
+    - hardware
+
+- title: 
+  subtitle: Robotic arms and manipulation for industrial and service robots
+  image: images/robotic_manipulation.jpg
+  link: 
+  description: Robotic arms and manipulation for industrial and service robots.
+  repo: greenelab/lab-website-template
+  tags:
+    - robotic arms
+    - software
+    - hardware

@@ -1,0 +1,105 @@
+{%- comment -%}
+  Tabbed member list. Groups `include.data` into tabs defined in the data
+  file named by `include.tabs` (id, label, icon, filter) and renders each
+  tab's members with `include.component`. CSS-only, no JS required.
+
+  Usage:
+    {% include people-tabs.html data="members" component="portrait" tabs="people_tabs" %}
+{%- endcomment -%}
+
+{% assign emptyarray = "" | split: "," %}
+{% assign all_data = site.data[include.data]
+  | default: site[include.data]
+  | default: emptyarray
+%}
+{% assign tabs = site.data[include.tabs] | default: emptyarray %}
+{% assign prefix = include.id | default: include.data | append: "-" | append: include.tabs %}
+
+<div class="people-tabs">
+  {% for tab in tabs %}
+    <input
+      type="radio"
+      name="{{ prefix }}"
+      id="{{ prefix }}-{{ tab.id }}"
+      class="people-tabs-input"
+      {% if forloop.first %}checked{% endif %}
+    >
+  {% endfor %}
+
+  <div class="people-tabs-nav" role="tablist">
+    {% for tab in tabs %}
+      {% assign count = all_data | data_filter: tab.filter | size %}
+      <label
+        class="people-tabs-label"
+        for="{{ prefix }}-{{ tab.id }}"
+        role="tab"
+        aria-controls="{{ prefix }}-{{ tab.id }}-panel"
+      >
+        {% include icon.html icon=tab.icon %}
+        {{ tab.label }}
+        <span class="people-tabs-count">{{ count }}</span>
+      </label>
+    {% endfor %}
+  </div>
+
+  <div class="people-tabs-panels">
+    {% for tab in tabs %}
+      {% assign panel_data = all_data | data_filter: tab.filter | sort: "name" %}
+      <div
+        class="people-tabs-panel"
+        id="{{ prefix }}-{{ tab.id }}-panel"
+        role="tabpanel"
+      >
+        {% for d in panel_data %}
+          {% assign style = d.style | default: include.style %}
+
+          {%
+            include {{ include.component | append: ".html" }}
+            affiliation=d.affiliation
+            author=d.author
+            authors=d.authors
+            buttons=d.buttons
+            caption=d.caption
+            content=d.content
+            date=d.date
+            description=d.description
+            excerpt=d.excerpt
+            height=d.height
+            icon=d.icon
+            id=d.id
+            image=d.image
+            last_modified_at=d.last_modified_at
+            link=d.link
+            lookup=d.lookup
+            name=d.name
+            publisher=d.publisher
+            repo=d.repo
+            role=d.role
+            slug=d.slug
+            style=style
+            subtitle=d.subtitle
+            tags=d.tags
+            text=d.text
+            title=d.title
+            tooltip=d.tooltip
+            type=d.type
+            url=d.url
+            width=d.width
+          %}
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+
+  <style>
+    {% for tab in tabs %}
+      #{{ prefix }}-{{ tab.id }}:checked ~ .people-tabs-panels #{{ prefix }}-{{ tab.id }}-panel {
+        display: flex;
+      }
+      #{{ prefix }}-{{ tab.id }}:checked ~ .people-tabs-nav label[for="{{ prefix }}-{{ tab.id }}"] {
+        background: var(--primary);
+        color: var(--background);
+      }
+    {% endfor %}
+  </style>
+</div>

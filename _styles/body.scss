@@ -1,6 +1,18 @@
 ---
 ---
 
+// the homepage's .hero-spacer resizes above the viewport as the user
+// scrolls (see header.scss). overflow-anchor isn't inherited, so scroll
+// anchoring can pick *any* element in the page as its anchor node - not
+// just .hero-spacer or body themselves - and fight the user's actual
+// scroll input trying to compensate for that resize. disabling it
+// universally is the only way to rule that out for every element
+*,
+*::before,
+*::after {
+  overflow-anchor: none;
+}
+
 body {
   display: flex;
   flex-direction: column;

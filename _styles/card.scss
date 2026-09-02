@@ -10,10 +10,20 @@
   max-width: calc(100% - 20px - 20px);
   margin: 10px;
   background: var(--background);
+  border: solid 1px var(--light-gray);
   border-radius: var(--rounded);
   overflow: hidden;
-  box-shadow: var(--shadow);
+  transition: box-shadow var(--transition), border-color var(--transition);
   vertical-align: top;
+}
+
+.card:hover {
+  border-color: var(--gray);
+  box-shadow: var(--shadow);
+}
+
+.card[data-style="medium"] {
+  width: 350px;
 }
 
 .card[data-style="small"] {
