@@ -2,7 +2,7 @@
 title: How the LIRA lab was born. A small story about the lab.
 image: images/blog/tmr24/tmr24.jpg
 author: miguel-garcia
-tags: robotics, competition, cdmx
+tags: robotics, competition, mexico
 ---
 
 In 2022, the Biorobotics lab had no members working on any project. All of it's members started to leave when the Covid-19 pandemic started. All of the current projects and teams (Robocup@Home, Robocup@SPL, Logistics, etc.) stopped working during the two years that we were confined at our homes. Most of the teammates left to start their careers. 
@@ -17,8 +17,15 @@ During the pandemic, I was taking the Mobile Robots course from Prof. Negrete (w
 
 Ruth and Miguel chose Pumanoids, while another student, Hector Robles, chose the AutoModel project. 
 
-Both of this projects were not at the same lab as Justina or Logistics. This 2 project were in another lab at the basement of building T, which we now know as the LIRA lab. Back then, we only called it "the lab", as we were not any formal organization or student society.
 
-In 2023, the lab only had 4 students: Ruth, Hector, Andres and me. In this year, Andres joined to complete his bachelor's thesis. He also did a lot of development of the Nimbro robot and after he graduated, Andres started working for Ford Motor Company.
+Both of this projects were not at the same lab as Justina or Logistics. This projects were in another lab (abandoned at the time) at the basement of building T, which we now know as the LIRA lab. Back then, we only called it "the lab", as we were not any formal organization or student society.
 
+In 2023, the lab only had 4 students: Ruth, Hector, Andres and me. In this year, Andres joined to complete his bachelor's thesis. He also did a lot of development of the Nimbro robot and after he graduated, Andres started working for Ford Motor Company. Hector continued working on the AutoModelCar project. He won 1st Place in 2022.
 
+{% capture content %}
+{% include figure.html image="images/blog/liraborn/automodel.gif" %}
+{% include figure.html image="images/blog/liraborn/automodel.jpeg" %}
+{% include figure.html image="images/blog/liraborn/nimbro_walk.gif" %}
+{% include figure.html image="images/blog/liraborn/nimbro.gif" %}
+{% endcapture %}
+{% include grid.html style="square" content=content %}

@@ -200,11 +200,13 @@ header[data-big] {
   }
 
   .title {
-    font-size: calc(var(--xxl) - var(--shrink) * (var(--xxl) - var(--large)));
-  }
-
-  .subtitle {
-    opacity: calc(0.8 - var(--shrink) * 0.8);
+    // written as a linear interpolation (rather than
+    // "var(--xxl) - var(--shrink) * (var(--xxl) - var(--large))") because
+    // that subtraction form references var(--xxl) - a clamp() value -
+    // twice inside one calc(), which Chrome fails to resolve (computes to
+    // 0px instead of the expected size, confirmed via computed-style
+    // inspection) - each custom property must appear only once per calc()
+    font-size: calc((1 - var(--shrink)) * var(--xxl) + var(--shrink) * var(--large));
   }
 }
 
