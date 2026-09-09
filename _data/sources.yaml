@@ -4,59 +4,59 @@
   date: 2025-06-20
   image: images/paper2.png
 
+- id: doi:10.1201/9781003643456
+  title: Deep Neural Networks for Grasp Planning in Domestic Service Robots
+  authors: 
+    - German Alday-Salazar
+    - Itzel Gonzalez-Jimenez
+    - Marco Negrete
+  type: paper
+  description: Deep Neural Networks for Grasp Planning in Domestic Service Robots (Handbook of Intelligent Robots, 2025)
+  date: 2026-06-28
+  image: images/publications/german_paper.webp
+
+- id: doi:10.3390/e28050577
+  type: paper
+  image: images/publications/causal.png
+
+- id: doi:10.1007/s10846-026-02370-4
+  type: paper
+  image: images/publications/stochastic.png
+
 - id: doi:10.1007/978-3-031-22419-5_31
+  type: paper
   image: images/paper9.png
 
 - id: doi:10.1080/08839514.2024.2304942
+  type: paper
   image: images/paper3.png
 
 - id: doi:10.1016/j.isatra.2023.07.037
+  type: paper
   image: images/paper4.png
 
 - id: doi:10.1007/978-3-031-43111-1_4
+  type: paper
   image: images/paper5.png
 
 - id: doi:10.1080/01691864.2022.2114296
+  type: paper
   image: images/paper7.png
 
 - id: doi:10.1109/case49997.2022.9926680
+  type: paper
   image: images/paper8.png
 
 - id: doi:10.1016/j.robot.2019.01.007
+  type: paper 
   image: images/paper10.png
 
 - id: doi:10.15622/sp.60.1
+  type: paper
   image: images/paper11.png
-
-- id: doi:10.21203/rs.3.rs-963629/v1
-  remove: true
-
-- id: doi:10.5220/0010229306980707
-  remove: true
 
 - id: doi:10.20965/jrm.2025.p0579
   type: paper
   image: images/paper1.png
 
-- id: doi:10.1109/PAHCE.2009.5158382
-  remove: true
-
-- id: doi:10.1109/ICVR.2009.5174234
-  remove: true
-
-- id: doi:10.1109/PAHCE.2010.5474568
-  remove: true
-
-- id: doi:10.3182/20120829-3-mx-2028.00205
-  remove: true
-
-- id: doi:10.1007/978-3-319-08338-4_17
-  remove: true
-
-- id: doi:10.1109/ICARSC.2016.29
-  remove: true
-
-- id: doi:10.1051/matecconf/201816103011
-  remove: true
-  
 

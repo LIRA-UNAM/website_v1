@@ -1,5 +1,36 @@
 # DO NOT EDIT, GENERATED AUTOMATICALLY
 
+- id: doi:10.20965/jrm.2025.p0594
+  title: Complex Task Planning for General-Purpose Service Robots
+  authors:
+  - Luis Contreras
+  - "Jes\xFAs Savage"
+  - "Stephany Ortu\xF1o-Chanelo"
+  - Marco Negrete
+  - Hiroyuki Okada
+  publisher: Journal of Robotics and Mechatronics
+  date: '2025-06-20'
+  link: https://doi.org/g977w5
+  type: paper
+  description: null
+  image: images/paper2.png
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1201/9781003643456
+  title: Deep Neural Networks for Grasp Planning in Domestic Service Robots
+  authors:
+  - German Alday-Salazar
+  - Itzel Gonzalez-Jimenez
+  - Marco Negrete
+  publisher: CRC Press
+  date: '2026-06-28'
+  link: https://doi.org/hch3jn
+  type: paper
+  description: Deep Neural Networks for Grasp Planning in Domestic Service Robots
+    (Handbook of Intelligent Robots, 2025)
+  image: images/publications/german_paper.webp
+  plugin: sources.py
+  file: sources.yaml
 - id: doi:10.3390/e28050577
   title: 'Causal Structure Learning Assumptions Shape Counterfactual Safety: Expert-Guided
     Constraints vs. Data-Driven DAGs with Probabilistic Logic Twin Networks'
@@ -19,9 +50,10 @@
   publisher: Entropy
   date: '2026-05-21'
   link: https://doi.org/hb5f9z
-  orcid: 0000-0002-5468-2807
-  plugin: orcid.py
-  file: orcid.yaml
+  type: paper
+  image: images/publications/causal.png
+  plugin: sources.py
+  file: sources.yaml
 - id: doi:10.1007/s10846-026-02370-4
   title: Stochastic Robot Behaviors through Hidden Markov Models with Inputs and Outputs
   authors:
@@ -32,43 +64,27 @@
   publisher: Journal of Intelligent &amp; Robotic Systems
   date: '2026-04-06'
   link: https://doi.org/hbwvns
-  orcid: 0000-0002-5468-2807
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.20965/jrm.2025.p0594
-  title: Complex Task Planning for General-Purpose Service Robots
-  authors:
-  - Luis Contreras
-  - "Jes\xFAs Savage"
-  - "Stephany Ortu\xF1o-Chanelo"
-  - Marco Negrete
-  - Hiroyuki Okada
-  publisher: Journal of Robotics and Mechatronics
-  date: '2025-06-20'
-  link: https://doi.org/g977w5
-  orcid: 0000-0002-5468-2807
+  type: paper
+  image: images/publications/stochastic.png
   plugin: sources.py
   file: sources.yaml
-  type: paper
-  description: null
-  image: images/paper2.png
-- id: doi:10.20965/jrm.2025.p0579
-  title: Multi-View Object Recognition and Pose Sequence Estimation Using HMMs
+- id: doi:10.1007/978-3-031-22419-5_31
+  title: "Probabilistic Logic Markov Decision Processes for\_Modeling Driving Behaviors\
+    \ in\_Self-driving Cars"
   authors:
-  - "Lorena N\xFA\xF1ez"
-  - "Jes\xFAs Savage"
-  - Miguel Moctezuma-Flores
-  - Luis Contreras
+  - "H\xE9ctor Avil\xE9s"
   - Marco Negrete
-  - Hiroyuki Okada
-  publisher: Journal of Robotics and Mechatronics
-  date: '2025-06-20'
-  link: https://doi.org/g977w6
-  orcid: 0000-0002-5468-2807
+  - "Rub\xE9n Machucho"
+  - Karelly Rivera
+  - David Trejo
+  - "H\xE9ctor Vargas"
+  publisher: Lecture Notes in Computer Science
+  date: '2022-01-01'
+  link: https://doi.org/g977xc
+  type: paper
+  image: images/paper9.png
   plugin: sources.py
   file: sources.yaml
-  type: paper
-  image: images/paper1.png
 - id: doi:10.1080/08839514.2024.2304942
   title: Autonomous Behavior Selection For Self-driving Cars Using Probabilistic Logic
     Factored Markov Decision Processes
@@ -83,10 +99,10 @@
   publisher: Applied Artificial Intelligence
   date: '2024-03-11'
   link: https://doi.org/g977w7
-  orcid: 0000-0002-5468-2807
+  type: paper
+  image: images/paper3.png
   plugin: sources.py
   file: sources.yaml
-  image: images/paper3.png
 - id: doi:10.1016/j.isatra.2023.07.037
   title: "Trajectory tracking nonlinear\n                    <mml:math xmlns:mml=\"\
     http://www.w3.org/1998/Math/MathML\" altimg=\"si230.svg\" display=\"inline\" id=\"\
@@ -104,10 +120,10 @@
   publisher: ISA Transactions
   date: '2023-11-01'
   link: https://doi.org/g977w8
-  orcid: 0000-0002-5468-2807
+  type: paper
+  image: images/paper4.png
   plugin: sources.py
   file: sources.yaml
-  image: images/paper4.png
 - id: doi:10.1007/978-3-031-43111-1_4
   title: 'Fail It till You Make It: Error Expectation in Complex-Plan Execution for
     Service Robots'
@@ -121,10 +137,10 @@
   publisher: Lecture Notes in Computer Science
   date: '2023-01-01'
   link: https://doi.org/g977w9
-  orcid: 0000-0002-5468-2807
+  type: paper
+  image: images/paper5.png
   plugin: sources.py
   file: sources.yaml
-  image: images/paper5.png
 - id: doi:10.1080/01691864.2022.2114296
   title: 'Sparse-Map: automatic topological map creation via unsupervised learning
     techniques'
@@ -139,10 +155,10 @@
   publisher: Advanced Robotics
   date: '2022-08-30'
   link: https://doi.org/g4h3zv
-  orcid: 0000-0002-5468-2807
+  type: paper
+  image: images/paper7.png
   plugin: sources.py
   file: sources.yaml
-  image: images/paper7.png
 - id: doi:10.1109/case49997.2022.9926680
   title: Multiview Object and View Sequence Recognition using Hidden Markov Models
   authors:
@@ -155,27 +171,10 @@
     (CASE)
   date: '2022-08-20'
   link: https://doi.org/g977xb
-  orcid: 0000-0002-5468-2807
-  plugin: sources.py
-  file: sources.yaml
+  type: paper
   image: images/paper8.png
-- id: doi:10.1007/978-3-031-22419-5_31
-  title: "Probabilistic Logic Markov Decision Processes for\_Modeling Driving Behaviors\
-    \ in\_Self-driving Cars"
-  authors:
-  - "H\xE9ctor Avil\xE9s"
-  - Marco Negrete
-  - "Rub\xE9n Machucho"
-  - Karelly Rivera
-  - David Trejo
-  - "H\xE9ctor Vargas"
-  publisher: Lecture Notes in Computer Science
-  date: '2022-01-01'
-  link: https://doi.org/g977xc
-  orcid: 0000-0002-5468-2807
   plugin: sources.py
   file: sources.yaml
-  image: images/paper9.png
 - id: doi:10.1016/j.robot.2019.01.007
   title: Semantic reasoning in service robots using expert systems
   authors:
@@ -191,10 +190,10 @@
   publisher: Robotics and Autonomous Systems
   date: '2019-04-01'
   link: https://doi.org/gjmxm4
-  orcid: 0000-0002-5468-2807
+  type: paper
+  image: images/paper10.png
   plugin: sources.py
   file: sources.yaml
-  image: images/paper10.png
 - id: doi:10.15622/sp.60.1
   title: A Motion-Planning System for a Domestic Service Robot
   authors:
@@ -204,7 +203,23 @@
   publisher: SPIIRAS Proceedings
   date: '2018-10-01'
   link: https://doi.org/g977xg
-  orcid: 0000-0002-5468-2807
+  type: paper
+  image: images/paper11.png
   plugin: sources.py
   file: sources.yaml
-  image: images/paper11.png
+- id: doi:10.20965/jrm.2025.p0579
+  title: Multi-View Object Recognition and Pose Sequence Estimation Using HMMs
+  authors:
+  - "Lorena N\xFA\xF1ez"
+  - "Jes\xFAs Savage"
+  - Miguel Moctezuma-Flores
+  - Luis Contreras
+  - Marco Negrete
+  - Hiroyuki Okada
+  publisher: Journal of Robotics and Mechatronics
+  date: '2025-06-20'
+  link: https://doi.org/g977w6
+  type: paper
+  image: images/paper1.png
+  plugin: sources.py
+  file: sources.yaml
