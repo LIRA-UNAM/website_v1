@@ -5,7 +5,7 @@ role: undergrad
 affiliation: Ingeniería - UNAM
 group: alum
 links:
-  github: github.com/gmsebastian
+  github: gmsebastian
 ---
 
 ## Technical Profile
