@@ -27,6 +27,18 @@ The lab also publishes original research in the robotics field. Including comput
 <br>
 {%
   include button.html
+  type="instagram"
+  text="Instagram"
+  link="lira.unam"
+%}
+{%
+  include button.html
+  type="facebook"
+  text="Facebook"
+  link="people/LIRA-UNAM/61589024203293/"
+%}
+{%
+  include button.html
   type="youtube"
   text="LIRA Youtube"
   link="@LIRA-UNAM"
