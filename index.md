@@ -5,10 +5,9 @@
 ---
 
 {% capture info %}
-LIRA is a research lab. **We are NOT a student society or Agrupación Estudiantil. We do not have a recruitment process.** If you want to join the lab, you can contact us through email or pay a visit. More info in **[Contact](contact)** section.
+LIRA is a research lab. **We are NOT a student society or Agrupación Estudiantil.** If you want to join the lab, you can contact us through email or pay a visit. More info in **[Contact](contact)** section.
 {% endcapture %}
-{% capture content %}**Info** {{ info }}{% endcapture %}
-{% include alert.html type="info" content=content %}
+{% include alert.html type="info" content=info %}
 
 
 {% capture content %}

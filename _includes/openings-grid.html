@@ -1,0 +1,19 @@
+{% assign openings = site.pages | where_exp: "item", "item.path contains 'openings/' and item.name != 'index.md'" %}
+
+{% if openings.size > 0 %}
+  <div class="grid" data-style="{{ include.style }}">
+    {% for item in openings %}
+      {%
+        include openings-card.html
+        title=item.title
+        image=item.image
+        description=item.description
+        url=item.url
+      %}
+    {% endfor %}
+  </div>
+{% else %}
+  <p style="text-align: center; font-style: italic; margin-top: 2rem;">
+    Currently there are no available openings. Please check back later!
+  </p>
+{% endif %}
