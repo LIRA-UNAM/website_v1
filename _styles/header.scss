@@ -247,3 +247,16 @@ header[data-big]:not([data-compact]) {
   // re-triggers our scroll handler and creates a runaway feedback loop
   overflow-anchor: none;
 }
+
+// Added this to prevent the logo to be squished in mobile screens
+header .home .logo {
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+header .home .logo img,
+header .home .logo svg {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
