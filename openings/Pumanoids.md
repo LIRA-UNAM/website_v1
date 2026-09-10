@@ -1,8 +1,6 @@
 ---
 title: Pumanoids
 image: "images/openings/Pumanoids_opening_07092026.png"
-header: "images/openings/Header_Pumanoids_opening1.jpg"
-header-dark: true
 ---
 
 <div style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('{{ "images/openings/Header_Pumanoids_opening.jpg" | relative_url }}'); background-size: cover; background-position: center; padding: 4rem 2rem; border-radius: 8px; margin-bottom: 2rem; text-align: center; color: white; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);">
