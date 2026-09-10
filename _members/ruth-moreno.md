@@ -9,7 +9,7 @@ links:
 ---
 
 ## 🎓 Academic Profile
-Ruth is an undergraduate student pursuing her degree in Mechatronics Engineering at the National Autonomous University of Mexico (UNAM). Her academic trajectory is centered on the integration of advanced computational intelligence with autonomous robotic systems, specifically targeting how robots perceive and navigate their environments.
+Ruth is a mechatronics engineer pursuing her master's degree in Electrical Engineering at the National Autonomous University of Mexico (UNAM). Her academic trajectory is centered on the integration of advanced computational intelligence with autonomous robotic systems, specifically targeting how robots perceive and navigate their environments.
 
 ### 🧠 Core Research Focus and Specialization
 Ruth's research is highly interdisciplinary, focusing on leveraging modern AI techniques to solve fundamental robotics challenges:
