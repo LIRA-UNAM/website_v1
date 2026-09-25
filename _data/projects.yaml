@@ -1,7 +1,7 @@
 - title: Humanoid Robots
   subtitle: Middle Size & Adult Size
   group: featured
-  image: images/nimbro.png
+  image: images/projects/Booster.jpg
   link: https://github.com/LIRA-UNAM/Pumanoids
   description: Humanoid robots developed for research and competitions, including the RoboCup Humanoid Soccer League and RCAP Beijing Masters.
   repo: LIRA-UNAM/Pumanoids
