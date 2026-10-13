@@ -2,24 +2,30 @@
 ---
 
 .card {
+  position: relative;
   display: inline-flex;
   justify-content: stretch;
-  align-items: center;
+  align-items: stretch;
   flex-direction: column;
   width: 500px;
   max-width: calc(100% - 20px - 20px);
-  margin: 10px;
-  background: var(--background);
+  margin: 12px;
+  background: var(--surface);
   border: solid 1px var(--light-gray);
-  border-radius: var(--rounded);
+  border-radius: var(--rounded-lg);
+  box-shadow: var(--shadow-sm);
   overflow: hidden;
-  transition: box-shadow var(--transition), border-color var(--transition);
   vertical-align: top;
+  transition:
+    transform 0.35s var(--ease-out),
+    box-shadow 0.35s var(--ease-out),
+    border-color 0.35s var(--ease-out);
 }
 
 .card:hover {
-  border-color: var(--gray);
-  box-shadow: var(--shadow);
+  border-color: color-mix(in srgb, var(--primary) 30%, var(--light-gray));
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
 }
 
 .card[data-style="medium"] {
@@ -30,21 +36,33 @@
   width: 250px;
 }
 
+.card-image {
+  display: block;
+  overflow: hidden;
+}
+
 .card-image img {
+  display: block;
   aspect-ratio: 2 / 2;
   object-fit: cover;
   width: 100%;
-  // box-shadow: var(--shadow);
+  transition: transform 0.6s var(--ease-out);
+}
+
+.card:hover .card-image img {
+  transform: scale(1.05);
 }
 
 .card-text {
-  display: inline-flex;
+  display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
-  gap: 20px;
+  flex-grow: 1;
+  gap: 12px;
   max-width: 100%;
-  padding: 20px;
+  padding: 20px 24px 24px;
+  text-align: left;
 }
 
 .card-text > * {
@@ -54,9 +72,55 @@
 .card-title {
   font-family: var(--heading);
   font-weight: var(--semi-bold);
+  font-size: 1.2rem;
+  letter-spacing: -0.015em;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.card-title[href]:hover {
+  color: var(--primary);
+}
+
+// the title link covers the whole card, so anywhere on it is clickable
+.card-title[href]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+// arrow that slides in on hover
+.card-title[href]::after {
+  content: "→";
+  display: inline-block;
+  margin-left: 0.35em;
+  color: var(--secondary);
+  opacity: 0;
+  translate: -6px 0;
+  transition: opacity var(--transition), translate var(--transition);
+}
+
+.card:hover .card-title[href]::after {
+  opacity: 1;
+  translate: 0 0;
 }
 
 .card-subtitle {
-  margin-top: -10px !important;
-  font-style: italic;
+  margin-top: -6px !important;
+  color: var(--gray);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.card-text p {
+  color: var(--dark-gray);
+  font-size: 0.98rem;
+}
+
+// tags stay clickable above the stretched title link
+.card .tags {
+  position: relative;
+  z-index: 1;
+  justify-content: flex-start;
 }

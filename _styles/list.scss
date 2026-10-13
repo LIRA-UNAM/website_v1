@@ -12,7 +12,7 @@ ul {
 }
 
 li {
-  margin: 5px 0;
+  margin: 6px 0;
   padding-left: 10px;
   text-align: left;
   line-height: var(--spacing);
@@ -21,4 +21,8 @@ li {
   ol {
     margin: 0;
   }
+}
+
+li::marker {
+  color: var(--secondary);
 }

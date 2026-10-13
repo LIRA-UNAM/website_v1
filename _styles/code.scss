@@ -11,15 +11,19 @@ code * {
 // inline code
 code.highlighter-rouge {
   padding: 2px 6px;
-  background: var(--light-gray);
-  border-radius: var(--rounded);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--primary) 8%, transparent);
+  color: var(--primary);
+  font-size: 0.9em;
 }
 
 // code block
 div.highlighter-rouge {
   width: 100%;
   margin: 40px 0;
-  border-radius: var(--rounded);
+  border: solid 1px rgb(255 255 255 / 0.06);
+  border-radius: var(--rounded-lg);
+  box-shadow: var(--shadow-sm);
   overflow-x: auto;
   overflow-y: auto;
   text-align: left;
@@ -31,8 +35,9 @@ div.highlighter-rouge {
       width: fit-content;
       min-width: 100%;
       margin: 0;
-      padding: 20px;
+      padding: 20px 24px;
       color: var(--white);
+      line-height: 1.6;
     }
   }
 }

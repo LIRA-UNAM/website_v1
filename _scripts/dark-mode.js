@@ -19,7 +19,16 @@
   // when user toggles mode button
   window.onDarkToggleChange = (event) => {
     const value = event.target.checked;
-    document.documentElement.dataset.dark = value;
-    window.localStorage.setItem("dark-mode", value);
+    const apply = () => {
+      document.documentElement.dataset.dark = value;
+      window.localStorage.setItem("dark-mode", value);
+    };
+
+    // cross-fade between themes where view transitions are supported
+    const motionOk = !window.matchMedia("(prefers-reduced-motion: reduce)")
+      .matches;
+    if (document.startViewTransition && motionOk)
+      document.startViewTransition(apply);
+    else apply();
   };
 }

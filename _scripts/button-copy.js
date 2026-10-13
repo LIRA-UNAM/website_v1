@@ -1,65 +1,46 @@
+/*
+  copies the value of a button-copy.html instance to the clipboard when its
+  copy action is clicked. delegated from the document, so it works for any
+  number of instances on a page.
+*/
+
 {
-window.addEventListener('load', function () {
-    document.getElementById('button-copy-text').addEventListener('click', function() {
-        // 1. Get the text you want to copy
-        const textToCopy = document.getElementById('copy-text').value;
-        const $defaultMessage = document.getElementById('default-message');
-        const $successMessage = document.getElementById('success-message');
-        // 2. Use the modern Clipboard API
-        navigator.clipboard.writeText(textToCopy)
-            .then(() => {
-                // Success: Notify the user
-                // const messageElement = document.getElementById('message');
-                // messageElement.textContent = 'Text successfully copied to clipboard!';
-                showSuccess();
-                setTimeout(() => {
-                    resetToDefault();
-                }, 2000);
-            })
-            .catch(err => {
-                // Error: Handle cases where the API fails (e.g., due to browser permissions)
-                console.error('Could not copy text: ', err);
-                // document.getElementById('message').textContent = 'Error: Could not copy text.';
-                // Fallback (see section below)
-            });
+  const resetDelay = 2000;
 
-        const showSuccess = () => {
-            $defaultMessage.classList.add('hidden');
-            $successMessage.classList.remove('hidden');
-        }
-    
-        const resetToDefault = () => {
-            $defaultMessage.classList.remove('hidden');
-            $successMessage.classList.add('hidden');
-        }
+  const showCopied = (wrapper, action) => {
+    const icon = action.querySelector(".icon");
+    const label = action.querySelector(".button-copy-label");
 
-        });
+    wrapper.dataset.copied = "";
+    icon?.classList.replace("fa-regular", "fa-solid");
+    icon?.classList.replace("fa-copy", "fa-check");
+    if (label) label.textContent = "Copied";
 
-})
-    
+    clearTimeout(wrapper._copyTimer);
+    wrapper._copyTimer = setTimeout(() => {
+      delete wrapper.dataset.copied;
+      icon?.classList.replace("fa-solid", "fa-regular");
+      icon?.classList.replace("fa-check", "fa-copy");
+      if (label) label.textContent = "Copy";
+    }, resetDelay);
+  };
+
+  document.addEventListener("click", async (event) => {
+    const action = event.target.closest(".button-copy-action");
+    if (!action) return;
+
+    const wrapper = action.closest(".button-copy");
+    const input = wrapper?.querySelector(".button-copy-text");
+    if (!input) return;
+
+    try {
+      await navigator.clipboard.writeText(input.value);
+      showCopied(wrapper, action);
+    } catch (error) {
+      // clipboard api unavailable (e.g. insecure context): select the text
+      // so the user can copy it manually
+      console.error("Could not copy text: ", error);
+      input.select();
+    }
+  });
 }
-// window.addEventListener('load', function () {
-//     const clipboard = FlowbiteInstances.getInstance('CopyClipboard', 'npm-install-copy-text');
-
-//     const $defaultMessage = document.getElementById('default-message');
-//     const $successMessage = document.getElementById('success-message');
-
-//     clipboard.updateOnCopyCallback((clipboard) => {
-//         showSuccess();
-
-//         // reset to default state
-//         setTimeout(() => {
-//             resetToDefault();
-//         }, 2000);
-//     })
-
-//     const showSuccess = () => {
-//         $defaultMessage.classList.add('hidden');
-//         $successMessage.classList.remove('hidden');
-//     }
-
-//     const resetToDefault = () => {
-//         $defaultMessage.classList.remove('hidden');
-//         $successMessage.classList.add('hidden');
-//     }
-// })

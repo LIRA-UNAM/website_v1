@@ -3,12 +3,20 @@
 
 a {
   color: var(--primary);
-  transition: color var(--transition);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: color-mix(in srgb, currentColor 35%, transparent);
+  transition: color var(--transition), text-decoration-color var(--transition);
   overflow-wrap: break-word;
 }
 
 a:hover {
-  color: var(--text);
+  color: var(--primary-hover);
+  text-decoration-color: currentColor;
+}
+
+[data-dark="true"] a:hover {
+  color: var(--accent);
 }
 
 a:not([href]) {

@@ -3,34 +3,61 @@
 
 // colors
 [data-dark="false"] {
+  color-scheme: light;
   --primary: #1d2556;
   --primary-hover: #333f85;
+  --accent: #4f5fc7;
   --secondary: #ab8a3f;
-  --text: #1a1a1a;
+  // darker gold that keeps AA contrast for small text on light surfaces
+  --secondary-text: #8a6d2c;
+  --text: #161a2b;
   --background: #ffffff;
-  --background-alt: #f7f7f8;
-  --light-gray: #e2e4e8;
-  --gray: #72777d;
-  --dark-gray: #454a50;
-  --overlay: #00000016;
+  --background-alt: #f6f7fb;
+  --surface: #ffffff;
+  --light-gray: #e3e6ef;
+  --gray: #6b7185;
+  --dark-gray: #3f4558;
+  --overlay: rgb(29 37 86 / 0.06);
+
+  // depth
+  --shadow-sm: 0 1px 2px rgb(22 26 43 / 0.05), 0 2px 8px rgb(22 26 43 / 0.04);
+  --shadow: 0 2px 4px rgb(22 26 43 / 0.05), 0 12px 28px -8px rgb(29 37 86 / 0.18);
+  --shadow-lg: 0 4px 8px rgb(22 26 43 / 0.05), 0 24px 48px -12px rgb(29 37 86 / 0.28);
 }
 [data-dark="true"] {
+  color-scheme: dark;
   --primary: #7c8ad4;
   --primary-hover: #97a3dd;
+  --accent: #a5b0f0;
   --secondary: #d4b876;
-  --text: #f2f3f4;
-  --background: #0c1220;
-  --background-alt: #101828;
-  --light-gray: #263041;
-  --gray: #8990a0;
-  --dark-gray: #c3c8ce;
-  --overlay: #ffffff10;
+  --secondary-text: #d4b876;
+  --text: #eef0f6;
+  --background: #0b1120;
+  --background-alt: #0f172a;
+  --surface: #131c33;
+  --light-gray: #243049;
+  --gray: #8d95ab;
+  --dark-gray: #c3c8d4;
+  --overlay: rgb(255 255 255 / 0.06);
+
+  // depth
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.3), 0 2px 8px rgb(0 0 0 / 0.2);
+  --shadow: 0 2px 4px rgb(0 0 0 / 0.3), 0 12px 28px -8px rgb(0 0 0 / 0.5), 0 0 0 1px rgb(124 138 212 / 0.08);
+  --shadow-lg: 0 4px 8px rgb(0 0 0 / 0.3), 0 24px 48px -12px rgb(0 0 0 / 0.6), 0 0 0 1px rgb(124 138 212 / 0.16);
+}
+
+// gradients are declared on every themed element (not just :root) so that
+// elements with their own data-dark (hero header, dark sections) resolve
+// them against their own palette instead of inheriting the page's
+[data-dark] {
+  --gradient-brand: linear-gradient(135deg, var(--primary), var(--accent));
+  --gradient-accent: linear-gradient(90deg, var(--secondary), var(--accent));
 }
 
 :root {
   // font families
-  --title: "Inter", sans-serif;
-  --heading: "Inter", sans-serif;
+  --title: "Space Grotesk", sans-serif;
+  --heading: "Space Grotesk", sans-serif;
   --body: "Inter", sans-serif;
   --code: "Roboto Mono", monospace;
 
@@ -46,11 +73,20 @@
   --bold: 600;
 
   // text line spacing
-  --spacing: 1.55;
+  --spacing: 1.6;
   --compact: 1.15;
 
-  // effects
-  --rounded: 8px;
-  --shadow: 0 1px 2px var(--overlay), 0 8px 24px var(--overlay);
-  --transition: 0.2s ease;
+  // shape
+  --rounded-sm: 8px;
+  --rounded: 12px;
+  --rounded-lg: 18px;
+
+  // layout
+  --gutter: clamp(16px, 4vw, 40px);
+
+  // motion
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition: 0.25s var(--ease-out);
+  --duration-reveal: 0.7s;
 }

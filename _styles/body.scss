@@ -24,4 +24,12 @@ body {
   font-family: var(--body);
   text-align: center;
   line-height: var(--compact);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--secondary) 35%, transparent);
+  color: inherit;
 }

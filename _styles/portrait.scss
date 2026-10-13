@@ -8,22 +8,32 @@
 .portrait {
   position: relative;
   display: inline-flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  margin: 5px;
+  gap: 2px;
+  margin: 8px;
   width: 15rem;
-  background: var(--overlay);
-  color: var(--primary);
   max-width: calc(100% - 20px - 20px);
-  padding: 10px;
-  border-radius: var(--rounded);
+  padding: 12px 12px 18px;
+  border: solid 1px var(--light-gray);
+  border-radius: var(--rounded-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  color: var(--text);
   text-decoration: none;
-  transition: background var(--transition);
+  vertical-align: top;
+  transition:
+    transform 0.35s var(--ease-out),
+    box-shadow 0.35s var(--ease-out),
+    border-color 0.35s var(--ease-out);
 }
 
-.portrait:hover {
-  background: var(--light-gray);
+a.portrait[href]:hover {
+  border-color: color-mix(in srgb, var(--primary) 30%, var(--light-gray));
+  box-shadow: var(--shadow-lg);
+  color: var(--text);
+  transform: translateY(-4px);
 }
 
 .portrait[data-style="small"] {
@@ -34,57 +44,314 @@
   flex-direction: row;
   gap: 15px;
   width: unset;
+  padding: 6px 14px 6px 6px;
+  border-radius: 999px;
+  box-shadow: none;
   text-align: left;
-  background: var(--overlay);
-
 }
 
-.portrait .icon {
+// role badge (direct child only - the wide variant has other icons inside)
+.portrait > .icon,
+.portrait-media > .icon {
   position: absolute;
   left: 0;
   top: 0;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   width: calc(20px + 10%);
   aspect-ratio: 1 / 1;
   border-radius: 999px;
-  background: var(--background);
+  background: var(--surface);
   box-shadow: var(--shadow);
-  transform: translate(14%, 14%);
+  color: var(--primary);
+  transform: translate(22%, 22%);
+  transition: transform 0.35s var(--ease-spring), background var(--transition), color var(--transition);
 }
 
-.portrait[data-style="small"] .icon {
+a.portrait[href]:hover > .icon,
+.portrait[data-style="wide"]:hover .portrait-media > .icon {
+  background: var(--primary);
+  color: var(--background);
+  transform: translate(22%, 22%) scale(1.1);
+}
+
+.portrait[data-style="small"] > .icon {
   left: -2px;
   top: -2px;
 }
 
-.portrait[data-style="tiny"] .icon {
+.portrait[data-style="tiny"] > .icon {
   display: none;
 }
 
 .portrait-image {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 14px;
   aspect-ratio: 1 / 1;
-  border: solid 1px var(--light-gray);
   border-radius: var(--rounded);
   object-fit: cover;
+  transition: filter 0.6s var(--ease-out);
+}
+
+a.portrait[href]:hover .portrait-image {
+  filter: saturate(1.15) contrast(1.03);
 }
 
 .portrait[data-style="tiny"] .portrait-image {
-  width: 50px;
+  width: 40px;
   margin: 0;
+  border-radius: 999px;
 }
 
 .portrait-name {
   font-family: var(--heading);
   font-weight: var(--semi-bold);
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+}
+
+.portrait-description {
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+.portrait-affiliation {
+  color: var(--gray);
+  font-size: 0.82rem;
 }
 
 .portrait[data-style="tiny"] {
   .portrait-description,
   .portrait-affiliation {
     display: none;
+  }
+}
+
+// wide variant: horizontal card with extra details, used for the professor
+// on the People page (see the "wide" branch in _includes/portrait.html)
+
+$portrait-wide-wrap: 720px;
+
+.portrait[data-style="wide"] {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 32px;
+  width: min(100%, 940px);
+  max-width: 100%;
+  margin: 8px auto;
+  padding: 20px;
+  text-align: left;
+}
+
+.portrait[data-style="wide"]:hover {
+  border-color: color-mix(in srgb, var(--primary) 30%, var(--light-gray));
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.portrait-media {
+  position: relative;
+  flex-shrink: 0;
+  align-self: flex-start;
+  width: 260px;
+}
+
+.portrait[data-style="wide"] .portrait-image {
+  display: block;
+  margin: 0;
+  aspect-ratio: 4 / 5;
+}
+
+.portrait[data-style="wide"]:hover .portrait-image {
+  filter: saturate(1.15) contrast(1.03);
+}
+
+.portrait-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  gap: 6px;
+  min-width: 0;
+  padding: 6px 4px 4px;
+}
+
+// role as a small gold eyebrow
+.portrait[data-style="wide"] .portrait-description {
+  color: var(--secondary-text);
+  font-family: var(--heading);
+  font-weight: var(--bold);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.portrait[data-style="wide"] .portrait-name {
+  color: var(--text);
+  font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  text-decoration: none;
+}
+
+.portrait[data-style="wide"] .portrait-name[href]:hover {
+  color: var(--primary);
+}
+
+// the name link covers the whole card; actions sit above it
+.portrait[data-style="wide"] .portrait-name[href]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.portrait[data-style="wide"] .portrait-affiliation {
+  font-size: 0.95rem;
+}
+
+.portrait-section {
+  width: 100%;
+  margin-top: 12px;
+  padding-top: 14px;
+  border-top: solid 1px var(--light-gray);
+}
+
+.portrait-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  color: var(--gray);
+  font-family: var(--heading);
+  font-weight: var(--semi-bold);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.portrait-label .icon {
+  color: var(--secondary);
+}
+
+.portrait-fields {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.portrait-field {
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--primary) 7%, transparent);
+  color: var(--primary);
+  font-weight: var(--semi-bold);
+  font-size: 0.85rem;
+}
+
+// education as a small vertical timeline
+.portrait-education {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.portrait-education li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  padding: 0 0 0 22px;
+  line-height: 1.35;
+}
+
+.portrait-education li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.3em;
+  width: 10px;
+  height: 10px;
+  border: solid 2px var(--secondary);
+  border-radius: 999px;
+  background: var(--surface);
+}
+
+.portrait-education li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: calc(0.3em + 12px);
+  bottom: -12px;
+  width: 2px;
+  background: var(--light-gray);
+}
+
+.portrait-degree {
+  color: var(--text);
+  font-weight: var(--semi-bold);
+}
+
+.portrait-school {
+  color: var(--gray);
+  font-size: 0.88rem;
+}
+
+.portrait-actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+.portrait-actions .button {
+  margin: 0;
+  border: solid 1px var(--light-gray);
+}
+
+.portrait-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+  color: var(--primary);
+  font-family: var(--heading);
+  font-weight: var(--semi-bold);
+  font-size: 0.92rem;
+  text-decoration: none;
+}
+
+.portrait-more .icon {
+  transition: translate var(--transition);
+}
+
+.portrait-more:hover .icon {
+  translate: 4px 0;
+}
+
+@media (max-width: $portrait-wide-wrap) {
+  .portrait[data-style="wide"] {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .portrait-media {
+    align-self: center;
+    width: min(100%, 320px);
+  }
+
+  .portrait-more {
+    margin-left: 0;
   }
 }

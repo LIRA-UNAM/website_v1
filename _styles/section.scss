@@ -1,12 +1,22 @@
 ---
 ---
 
-$page: 1300px;
+$page: 1200px;
 $padding: 5px;
 
 section {
-  padding: $padding max($padding, calc((100% - $page) / 2));
+  padding: clamp(24px, 4vw, 48px) max(var(--gutter), calc((100% - $page) / 2));
   transition: background var(--transition), color var(--transition);
+}
+
+// the section padding already provides the vertical rhythm, so don't stack
+// the first/last child's own margins on top of it
+section > :first-child {
+  margin-top: 0;
+}
+
+section > :last-child {
+  margin-bottom: 0;
 }
 
 section[data-size="wide"] {
@@ -36,4 +46,12 @@ main > section:nth-of-type(odd) {
 
 main > section:nth-of-type(even) {
   background: var(--background-alt);
+}
+
+// dark band sections (e.g. the address block on the contact page) get a
+// soft indigo glow instead of a flat fill
+main > section[data-dark="true"] {
+  background:
+    radial-gradient(ellipse 80% 120% at 50% 0%, rgb(124 138 212 / 0.16), transparent 70%),
+    var(--background);
 }

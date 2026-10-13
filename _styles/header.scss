@@ -13,9 +13,13 @@ header {
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
-  padding: 16px 24px;
+  padding: 14px var(--gutter);
   border-bottom: solid 1px var(--light-gray);
-  transition: border-color var(--transition), background var(--transition);
+  // time-based only - never transition anything header[data-big] sizes from
+  // --shrink (height, logo height, title font-size), see below
+  transition:
+    border-color 0.3s var(--ease-out),
+    background 0.3s var(--ease-out);
 
   @if $sticky {
     position: sticky !important;
@@ -27,13 +31,14 @@ header {
 header a {
   color: var(--text);
   text-decoration: none;
+  transition: color 0.3s var(--ease-out);
 }
 
 .home {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   flex-basis: 0;
   flex-grow: 1;
   max-width: 100%;
@@ -53,7 +58,7 @@ header a {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 0;
+  gap: 2px;
   min-width: 0;
   font-family: var(--title);
   text-align: left;
@@ -62,22 +67,32 @@ header a {
 .title {
   font-size: var(--large);
   font-family: var(--title);
+  font-weight: var(--semi-bold);
+  letter-spacing: -0.015em;
 }
 
 .subtitle {
-  opacity: 0.8;
-  font-weight: var(--thin);
+  opacity: 0.7;
+  font-family: var(--body);
+  font-weight: var(--regular);
+  font-size: 0.85em;
+  letter-spacing: 0.01em;
 }
 
 .nav-toggle {
   display: none;
   position: relative;
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   margin: 0;
+  border-radius: var(--rounded-sm);
   color: var(--text);
   appearance: none;
   transition: background var(--transition);
+}
+
+.nav-toggle:hover {
+  background: var(--overlay);
 }
 
 .nav-toggle:after {
@@ -86,7 +101,7 @@ header a {
   left: 50%;
   top: 50%;
   color: var(--text);
-  font-size: 15px;
+  font-size: 16px;
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
   transform: translate(-50%, -50%);
@@ -101,43 +116,77 @@ nav {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 2px;
   font-family: var(--heading);
   font-weight: var(--semi-bold);
   font-size: 0.95rem;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
 
 nav > a {
-  padding: 8px 10px;
-  border-radius: var(--rounded);
-  transition: background var(--transition), color var(--transition);
+  position: relative;
+  padding: 8px 12px;
+  border-radius: var(--rounded-sm);
 }
 
-nav > a:hover {
-  background: var(--overlay);
+// animated gradient underline, also marks the current page
+nav > a::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 2px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--gradient-accent);
+  scale: 0 1;
+  transform-origin: left;
+  transition: scale 0.35s var(--ease-out);
+}
+
+nav > a:hover,
+nav > a[aria-current="page"] {
   color: var(--primary);
+}
+
+nav > a:hover::after,
+nav > a[aria-current="page"]::after {
+  scale: 1 1;
+}
+
+// inner pages' nav bar stays in place while page content cross-fades
+// (see @view-transition in all.scss); the homepage hero is left out so its
+// snapshot isn't stretched into the bar
+header:not([data-big]) {
+  view-transition-name: site-header;
 }
 
 header:not([data-big]),
 header[data-compact] {
-  // flatten the persistent nav bar to a plain surface that follows the
-  // site's light/dark toggle; the photographic treatment is reserved
-  // for the homepage hero only
+  // flatten the persistent nav bar to a frosted surface that follows the
+  // site's light/dark toggle; the photographic treatment is reserved for
+  // the homepage hero only
   --text: inherit;
   --background: inherit;
+  --background-alt: inherit;
+  --surface: inherit;
   --primary: inherit;
   --primary-hover: inherit;
+  --accent: inherit;
   --secondary: inherit;
+  --secondary-text: inherit;
   --light-gray: inherit;
   --gray: inherit;
   --dark-gray: inherit;
   --overlay: inherit;
-  background: var(--background);
-
-  &::before {
-    display: none;
-  }
+  --shadow-sm: inherit;
+  --shadow: inherit;
+  --shadow-lg: inherit;
+  color-scheme: inherit;
+  background: color-mix(in srgb, var(--background) 78%, transparent);
+  -webkit-backdrop-filter: saturate(1.6) blur(14px);
+  backdrop-filter: saturate(1.6) blur(14px);
+  border-bottom-color: color-mix(in srgb, var(--light-gray) 75%, transparent);
 
   @media (max-width: $collapse) {
     justify-content: flex-end;
@@ -154,12 +203,43 @@ header[data-compact] {
       align-items: flex-end;
       flex-direction: column;
       width: 100%;
+      padding: 4px 0;
+      transition:
+        opacity 0.3s var(--ease-out),
+        translate 0.3s var(--ease-out);
     }
-    
+
+    nav > a {
+      padding: 10px 12px;
+      font-size: 1.05rem;
+    }
+
     .title {
       font-size: var(--large);
     }
   }
+}
+
+// mobile menu slides in when opened
+@media (max-width: $collapse) {
+  @starting-style {
+    header:not([data-big]) nav,
+    header[data-compact] nav {
+      opacity: 0;
+      translate: 0 -8px;
+    }
+  }
+}
+
+// inner pages never show the hero photo (and don't load it)
+header:not([data-big])::before {
+  display: none;
+}
+
+// compact point on the homepage: fade the photo out instead of cutting it
+// (needs both attributes to outrank the header[data-big]::before rule below)
+header[data-big][data-compact]::before {
+  opacity: 0;
 }
 
 // compact height the big header shrinks to once fully scrolled, and the
@@ -207,6 +287,74 @@ header[data-big] {
     // 0px instead of the expected size, confirmed via computed-style
     // inspection) - each custom property must appear only once per calc()
     font-size: calc((1 - var(--shrink)) * var(--xxl) + var(--shrink) * var(--large));
+  }
+
+  // one-shot staggered entrance; opacity/translate only, so it never
+  // touches the --shrink-driven sizes above
+  .logo,
+  .title,
+  .subtitle,
+  nav,
+  .dark-toggle {
+    animation: rise-in 0.9s var(--ease-out) both;
+  }
+
+  .title {
+    animation-delay: 0.08s;
+  }
+
+  .subtitle {
+    animation-delay: 0.16s;
+  }
+
+  nav {
+    animation-delay: 0.24s;
+  }
+
+  .dark-toggle {
+    animation-delay: 0.32s;
+  }
+}
+
+// hero photo: richer navy gradient + soft indigo glow over the image
+// (replaces the flat 25%-opacity photo from .background)
+header[data-big]::before {
+  opacity: 1;
+  background-image:
+    radial-gradient(ellipse 60% 50% at 50% 45%, rgb(79 95 199 / 0.28), transparent 70%),
+    linear-gradient(180deg, rgb(0 21 56 / 0.6) 0%, rgb(0 21 56 / 0.74) 55%, rgb(0 21 56 / 0.95) 100%),
+    var(--image);
+  transition: opacity 0.3s var(--ease-out);
+}
+
+// scroll cue at the bottom of the hero, fading out as the header shrinks
+header[data-big]::after {
+  content: "\f078";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 28px;
+  color: rgb(255 255 255 / 0.75);
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 18px;
+  text-align: center;
+  opacity: calc(1 - var(--shrink) * 4);
+  pointer-events: none;
+  animation: cue-bounce 2.2s ease-in-out 1.2s infinite;
+}
+
+header[data-big][data-compact]::after {
+  display: none;
+}
+
+@keyframes cue-bounce {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 8px;
   }
 }
 
