@@ -10,8 +10,8 @@ $one: 500px;
   grid-template-columns: repeat(var(--repeat), 1fr);
   justify-content: center;
   align-items: flex-start;
-  gap: 40px;
-  margin: 40px 0;
+  gap: clamp(16px, 2.5vw, 28px);
+  margin: 32px 0;
 }
 
 .grid > * {

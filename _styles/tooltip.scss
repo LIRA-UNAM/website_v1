@@ -2,11 +2,14 @@
 ---
 
 .tippy-box {
-  background: var(--background);
+  border: solid 1px var(--light-gray);
+  border-radius: var(--rounded);
+  background: var(--surface);
   color: var(--text);
-  padding: 7.5px;
+  padding: 6px 8px;
+  font-size: 0.85rem;
   text-align: left;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow-lg);
 }
 
 .tippy-arrow {
@@ -17,7 +20,7 @@
 .tippy-arrow:before {
   width: 10px;
   height: 10px;
-  background: var(--background);
+  background: var(--surface);
   box-shadow: var(--shadow);
 }
 

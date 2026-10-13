@@ -1,5 +1,5 @@
 {% if include.lookup %}
-  {% assign member = site.members 
+  {% assign member = site.members
     | where_exp: "member", "member.slug == include.lookup"
     | first
   %}
@@ -9,43 +9,153 @@
 
 {% assign type = site.data.types[member.role] %}
 
-<div class="portrait-wrapper">
-  <a
-    {% if page.slug != member.slug %}
-      href="{{ member.url | relative_url | uri_escape }}"
-    {% endif %}
-    class="portrait"
-    data-style="{{ include.style }}"
-    aria-label="{{ member.name | default: "member link" | regex_strip }}"
-  >
-    {% if type %}
-      {% include icon.html icon=type.icon %}
-    {% endif %}
+{% if include.style == "wide" %}
+  {% comment %}
+    wide variant (e.g. the professor on the People page): shows extra front
+    matter fields - research, education, links - so read the full member
+    document, since list.html only passes a fixed set of fields. the member's
+    page body is never rendered here; it only appears on their own page
+  {% endcomment %}
+  {% assign doc = site.members
+    | where_exp: "doc", "doc.slug == member.slug"
+    | first
+    | default: member
+  %}
 
-    <img
-      src="{{ member.image | relative_url | uri_escape }}"
-      class="portrait-image"
-      alt="member portrait"
-      loading="lazy"
-      {% include fallback.html %}
+  <div class="portrait-wrapper">
+    <div class="portrait" data-style="wide">
+      <div class="portrait-media">
+        {% if type %}
+          {% include icon.html icon=type.icon %}
+        {% endif %}
+        <img
+          src="{{ member.image | relative_url | uri_escape }}"
+          class="portrait-image"
+          alt="{{ member.name | default: "member" | regex_strip }} portrait"
+          loading="lazy"
+          {% include fallback.html %}
+        >
+      </div>
+
+      <div class="portrait-body">
+        {% if member.description or type %}
+          <span class="portrait-description">
+            {{ member.description | default: type.description }}
+          </span>
+        {% endif %}
+
+        {% if member.name %}
+          <a
+            {% if page.slug != member.slug %}
+              href="{{ member.url | relative_url | uri_escape }}"
+            {% endif %}
+            class="portrait-name"
+          >
+            {{ member.name }}
+          </a>
+        {% endif %}
+
+        {% if member.affiliation %}
+          <span class="portrait-affiliation">
+            {{ member.affiliation }}
+          </span>
+        {% endif %}
+
+        {% if doc.research %}
+          <div class="portrait-section">
+            <span class="portrait-label">
+              {% include icon.html icon="fa-solid fa-flask" %}
+              Research fields
+            </span>
+            <div class="portrait-fields">
+              {% for field in doc.research %}
+                <span class="portrait-field">{{ field }}</span>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+
+        {% if doc.education %}
+          <div class="portrait-section">
+            <span class="portrait-label">
+              {% include icon.html icon="fa-solid fa-graduation-cap" %}
+              Education
+            </span>
+            <ul class="portrait-education">
+              {% for item in doc.education %}
+                <li>
+                  <span class="portrait-degree">{{ item.degree }}</span>
+                  <span class="portrait-school">
+                    {{ item.institution }}
+                    {% if item.year %}&nbsp;·&nbsp;{{ item.year }}{% endif %}
+                  </span>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+
+        <div class="portrait-actions">
+          {% for link in doc.links %}
+            {% assign key = link[0] %}
+            {% assign value = link[1] %}
+            {% if value and value != "" %}
+              {% include button.html type=key link=value style="bare" %}
+            {% endif %}
+          {% endfor %}
+
+          {% if page.slug != member.slug %}
+            <a
+              href="{{ member.url | relative_url | uri_escape }}"
+              class="portrait-more"
+            >
+              View full profile
+              {% include icon.html icon="fa-solid fa-arrow-right" %}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% else %}
+  <div class="portrait-wrapper">
+    <a
+      {% if page.slug != member.slug %}
+        href="{{ member.url | relative_url | uri_escape }}"
+      {% endif %}
+      class="portrait"
+      data-style="{{ include.style }}"
+      aria-label="{{ member.name | default: "member link" | regex_strip }}"
     >
+      {% if type %}
+        {% include icon.html icon=type.icon %}
+      {% endif %}
 
-    {% if member.name %}
-      <span class="portrait-name">
-        {{ member.name }}
-      </span>
-    {% endif %}
+      <img
+        src="{{ member.image | relative_url | uri_escape }}"
+        class="portrait-image"
+        alt="member portrait"
+        loading="lazy"
+        {% include fallback.html %}
+      >
 
-    {% if member.description or type %}
-      <span class="portrait-description">
-        {{ member.description | default: type.description }}
-      </span>
-    {% endif %}
+      {% if member.name %}
+        <span class="portrait-name">
+          {{ member.name }}
+        </span>
+      {% endif %}
 
-    {% if member.affiliation %}
-      <span class="portrait-affiliation">
-        {{ member.affiliation }}
-      </span>
-    {% endif %}
-  </a>
-</div>
+      {% if member.description or type %}
+        <span class="portrait-description">
+          {{ member.description | default: type.description }}
+        </span>
+      {% endif %}
+
+      {% if member.affiliation %}
+        <span class="portrait-affiliation">
+          {{ member.affiliation }}
+        </span>
+      {% endif %}
+    </a>
+  </div>
+{% endif %}

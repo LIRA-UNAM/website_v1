@@ -3,7 +3,7 @@
 
 hr {
   margin: 40px 0;
-  background: var(--light-gray);
-  border: none;
   height: 1px;
+  border: none;
+  background: linear-gradient(90deg, transparent, var(--light-gray) 15%, var(--light-gray) 85%, transparent);
 }

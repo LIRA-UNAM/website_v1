@@ -14,9 +14,17 @@ You can contact us by email or phone, or visit us on the ground floor of Buildin
 {%
   include button-copy.html
   type="email"
+  text="marco.negrete@ingenieria.unam.edu"
+  link="marco.negrete@ingenieria.unam.edu"
+%}
+
+{%
+  include button-copy.html
+  type="email"
   text="lira@ingenieria.unam.edu"
   link="lira@ingenieria.unam.edu"
 %}
+
 {%
   include button.html
   type="phone"

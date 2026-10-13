@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 8px;
   max-width: 100%;
   margin: 20px 0;
 }
@@ -15,25 +15,40 @@
   max-width: 100%;
   margin: 0;
   padding: 4px 12px;
-  border: solid 1px var(--light-gray);
+  border: solid 1px transparent;
   border-radius: 999px;
-  background: none;
-  color: var(--dark-gray);
-  font-size: 0.85rem;
+  background: color-mix(in srgb, var(--primary) 7%, transparent);
+  color: var(--primary);
+  font-weight: var(--semi-bold);
+  font-size: 0.8rem;
   text-decoration: none;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  transition: background var(--transition), color var(--transition), border-color var(--transition);
+  transition:
+    background var(--transition),
+    color var(--transition),
+    border-color var(--transition),
+    translate var(--transition);
+}
+
+.tag::before {
+  content: "#";
+  margin-right: 1px;
+  color: var(--secondary);
 }
 
 .tag:hover {
-  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 14%, transparent);
   color: var(--primary);
+  translate: 0 -1px;
 }
 
 .tag[data-active] {
-  border-color: var(--primary);
-  background: var(--primary);
-  color: var(--background);
+  background: var(--gradient-brand);
+  color: #ffffff;
+}
+
+.tag[data-active]::before {
+  color: inherit;
 }

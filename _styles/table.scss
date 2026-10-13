@@ -3,16 +3,35 @@
 
 table {
   margin: 40px auto;
-  border-collapse: collapse;
+  border: solid 1px var(--light-gray);
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: var(--rounded);
+  overflow: hidden;
   overflow-wrap: anywhere;
 }
 
 th {
+  background: var(--background-alt);
+  font-family: var(--heading);
   font-weight: var(--semi-bold);
+  text-align: left;
 }
 
 th,
 td {
-  padding: 10px 15px;
-  border: solid 1px var(--light-gray);
+  padding: 12px 16px;
+  border-bottom: solid 1px var(--light-gray);
+}
+
+tr:last-child > td {
+  border-bottom: none;
+}
+
+tbody tr {
+  transition: background var(--transition);
+}
+
+tbody tr:hover {
+  background: var(--overlay);
 }

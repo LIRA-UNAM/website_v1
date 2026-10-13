@@ -32,18 +32,29 @@
   display: none;
 }
 
+// center the tabs with auto margins rather than justify-content: center, so
+// that when they overflow on narrow screens the first tab isn't clipped and
+// the row still scrolls from its start
+.people-tabs-label:first-of-type {
+  margin-left: auto;
+}
+
+.people-tabs-label:last-of-type {
+  margin-right: auto;
+}
+
 .people-tabs-label {
   display: inline-flex;
   flex-shrink: 0;
   align-items: center;
-  gap: 8px;
-  padding: 11px 18px 10px;
+  gap: 10px;
+  padding: 13px 22px 12px;
   border: solid 1px transparent;
   border-radius: var(--rounded) var(--rounded) 0 0;
   color: var(--gray);
   font-family: var(--heading);
   font-weight: var(--semi-bold);
-  font-size: 0.95rem;
+  font-size: 1.5rem;
   white-space: nowrap;
   cursor: pointer;
   user-select: none;
@@ -59,24 +70,24 @@
   padding: 1px 8px;
   border-radius: 999px;
   background: var(--overlay);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: var(--regular);
   transition: background var(--transition), color var(--transition);
 }
 
 // panel surface holding the member cards
 .people-tabs-panels {
-  padding: 20px 10px;
+  padding: 24px 12px;
   background: var(--background-alt);
   border: solid 1px var(--light-gray);
-  border-radius: var(--rounded);
+  border-radius: var(--rounded-lg);
 }
 
 .people-tabs-panel {
   display: none;
   flex-wrap: wrap;
   justify-content: center;
-  animation: people-tabs-fade 0.2s ease;
+  animation: people-tabs-fade 0.3s var(--ease-out);
 }
 
 @keyframes people-tabs-fade {
@@ -90,17 +101,4 @@
   .people-tabs-panel {
     animation: none;
   }
-}
-
-// member cards read as cards on the panel surface
-.people-tabs-panel .portrait {
-  background: var(--background);
-  border: solid 1px var(--light-gray);
-  transition: border-color var(--transition), box-shadow var(--transition);
-}
-
-.people-tabs-panel .portrait:hover {
-  background: var(--background);
-  border-color: var(--gray);
-  box-shadow: var(--shadow);
 }

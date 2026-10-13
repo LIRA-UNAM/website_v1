@@ -4,9 +4,9 @@
 details {
   margin: 20px 0;
   padding: 0 20px;
-  border-radius: var(--rounded);
-  background: var(--theme-light);
   border: solid 1px var(--light-gray);
+  border-radius: var(--rounded);
+  background: var(--surface);
   text-align: left;
   overflow: hidden;
 }
@@ -14,18 +14,23 @@ details {
 summary {
   list-style: none;
   margin: 0 -20px;
-  padding: 10px;
+  padding: 12px 16px;
+  font-weight: var(--semi-bold);
   line-height: var(--compact);
   transition: background var(--transition);
   cursor: pointer;
 }
 
+summary::-webkit-details-marker {
+  display: none;
+}
+
 summary:hover {
-  background: var(--light-gray);
+  background: var(--overlay);
 }
 
 details[open] summary {
-  background: var(--light-gray);
+  background: var(--overlay);
 }
 
 summary::before {
@@ -33,11 +38,32 @@ summary::before {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  margin-right: 5px;
+  margin-right: 8px;
   width: 1em;
   height: 1em;
+  color: var(--secondary);
+  transition: transform var(--transition);
 }
 
 details[open] summary::before {
   transform: rotate(90deg);
+}
+
+// smooth open/close where supported
+@supports (interpolate-size: allow-keywords) {
+  details {
+    interpolate-size: allow-keywords;
+  }
+
+  details::details-content {
+    height: 0;
+    overflow: clip;
+    transition:
+      height 0.35s var(--ease-out),
+      content-visibility 0.35s allow-discrete;
+  }
+
+  details[open]::details-content {
+    height: auto;
+  }
 }

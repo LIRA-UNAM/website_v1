@@ -16,14 +16,25 @@ $wrap: 800px;
   width: 40%;
   aspect-ratio: 3 / 2;
   border: solid 1px var(--light-gray);
-  border-radius: var(--rounded);
+  border-radius: var(--rounded-lg);
+  box-shadow: var(--shadow-sm);
   overflow: hidden;
+  transition: box-shadow 0.35s var(--ease-out);
+}
+
+.feature-image:hover {
+  box-shadow: var(--shadow-lg);
 }
 
 .feature-image img {
   width: 60%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.feature-image:hover img {
+  transform: scale(1.05);
 }
 
 .feature-text {
@@ -31,10 +42,11 @@ $wrap: 800px;
 }
 
 .feature-title {
-  font-size: var(--large);
+  font-size: 1.3rem;
   text-align: center;
   font-family: var(--heading);
   font-weight: var(--semi-bold);
+  letter-spacing: -0.015em;
 }
 
 .feature[data-flip] {

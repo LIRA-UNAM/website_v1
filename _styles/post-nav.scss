@@ -17,17 +17,25 @@ $wrap: 600px;
   gap: 6px;
   flex: 1;
   max-width: calc(50% - 8px);
-  padding: 14px 20px;
-  border-radius: var(--rounded);
-  background: var(--primary);
-  color: var(--background);
+  padding: 16px 22px;
+  border: solid 1px var(--light-gray);
+  border-radius: var(--rounded-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  color: var(--text);
   text-align: left;
   text-decoration: none;
-  transition: background var(--transition);
+  transition:
+    transform 0.35s var(--ease-out),
+    box-shadow 0.35s var(--ease-out),
+    border-color 0.35s var(--ease-out);
 }
 
 .post-nav-link:hover {
-  background: var(--primary-hover);
+  border-color: color-mix(in srgb, var(--primary) 30%, var(--light-gray));
+  box-shadow: var(--shadow-lg);
+  color: var(--text);
+  transform: translateY(-3px);
 }
 
 .post-nav-link[data-flip] {
@@ -35,18 +43,34 @@ $wrap: 600px;
   text-align: right;
 }
 
+// small gold eyebrow
 .post-nav-label {
-  font-size: 0.85rem;
-  font-weight: var(--semi-bold);
-  opacity: 0.85;
+  color: var(--secondary-text);
+  font-family: var(--heading);
+  font-weight: var(--bold);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .post-nav-label .icon {
   margin: 0 0.4em;
+  transition: translate var(--transition);
+}
+
+// arrow nudges outward on hover
+.post-nav-link:hover .post-nav-label .icon {
+  translate: -3px 0;
+}
+
+.post-nav-link[data-flip]:hover .post-nav-label .icon {
+  translate: 3px 0;
 }
 
 .post-nav-title {
+  font-family: var(--heading);
   font-weight: var(--semi-bold);
+  font-size: 1.05rem;
   line-height: var(--compact);
 }
 

@@ -9,3 +9,92 @@
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
 }
+
+// keyboard focus ring, shared by every interactive element
+:focus-visible {
+  outline: solid 2px var(--secondary);
+  outline-offset: 3px;
+}
+
+// motion primitives. animate opacity and the individual `translate`
+// property (not `transform`), so they never fight hover effects, which
+// use `transform`
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    translate: 0 16px;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    translate: 0 18px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+// scroll reveal, driven by _scripts/reveal.js, which only adds .reveal-ready
+// to <html> when IntersectionObserver exists and reduced motion is off. the
+// selector list here must match `selector` in _scripts/reveal.js
+.reveal-ready
+  :is(
+    .card,
+    .news-card,
+    .opening-card,
+    .citation,
+    .post-excerpt,
+    .portrait:not([data-style="tiny"]),
+    .feature,
+    .figure,
+    .alert,
+    .post-nav-link,
+    main section > h2
+  ):not(header *):not(.is-revealed) {
+  opacity: 0;
+}
+
+.reveal-ready .is-revealed {
+  animation: reveal-up var(--duration-reveal) var(--ease-out) var(--reveal-delay, 0ms) both;
+}
+
+// cross-fade between pages (and on theme switch, see _scripts/dark-mode.js)
+@media (prefers-reduced-motion: no-preference) {
+  @view-transition {
+    navigation: auto;
+  }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.25s;
+  animation-timing-function: var(--ease-out);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media print {
+  .reveal-ready * {
+    opacity: 1 !important;
+    animation: none !important;
+  }
+}

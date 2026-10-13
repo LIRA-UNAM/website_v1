@@ -16,9 +16,9 @@ button {
   gap: 10px;
   max-width: calc(100% - 5px - 5px);
   margin: 5px;
-  padding: 9px 18px;
+  padding: 10px 20px;
   border: solid 1px transparent;
-  border-radius: var(--rounded);
+  border-radius: 999px;
   background: var(--primary);
   color: var(--background);
   text-align: center;
@@ -29,21 +29,43 @@ button {
   text-decoration: none;
   vertical-align: middle;
   appearance: none;
-  transition: background var(--transition), color var(--transition), border-color var(--transition);
+  transition:
+    background var(--transition),
+    color var(--transition),
+    border-color var(--transition),
+    transform var(--transition),
+    box-shadow var(--transition);
 }
 
 .button:hover {
   background: var(--primary-hover);
+  color: var(--background);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -10px color-mix(in srgb, var(--primary) 75%, transparent);
+}
+
+.button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.button .icon {
+  transition: transform var(--transition);
+}
+
+.button:hover .icon {
+  transform: scale(1.12);
 }
 
 .button[data-style="bare"] {
-  padding: 5px;
+  padding: 6px 12px;
   border: none;
   background: none;
   color: var(--primary);
 
   &:hover {
+    background: var(--overlay);
     color: var(--primary-hover);
+    box-shadow: none;
   }
 }
 
@@ -52,5 +74,81 @@ button {
 }
 
 .hidden {
-  display: none
+  display: none;
+}
+
+// copy-to-clipboard button: icon + read-only value + copy action
+// (see _includes/button-copy.html and _scripts/button-copy.js)
+.button.button-copy {
+  gap: 8px;
+  padding: 5px 5px 5px 18px;
+  border-color: var(--light-gray);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow-sm);
+}
+
+.button.button-copy:hover {
+  border-color: color-mix(in srgb, var(--primary) 35%, var(--light-gray));
+  background: var(--surface);
+  color: var(--text);
+  transform: none;
+  box-shadow: var(--shadow);
+}
+
+.button-copy > .icon {
+  color: var(--secondary);
+}
+
+// out-specifies the global input[type="text"] box in textbox.scss
+.button-copy input.button-copy-text {
+  min-width: 0;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 4px 2px;
+  border: none;
+  background: none;
+  box-shadow: none;
+  color: inherit;
+  font-family: var(--body);
+  font-size: 0.95rem;
+  field-sizing: content;
+  outline: none;
+}
+
+.button-copy-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  padding: 7px 14px;
+  border: none;
+  border-radius: 999px;
+  background: var(--primary);
+  color: var(--background);
+  font-family: var(--heading);
+  font-weight: var(--semi-bold);
+  font-size: 0.85rem;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.button-copy-action:hover {
+  background: var(--primary-hover);
+}
+
+.button-copy-action:active {
+  transform: scale(0.96);
+}
+
+.button-copy[data-copied] .button-copy-action {
+  background: #2e7d32;
+  color: #ffffff;
+  animation: copied-pop 0.35s var(--ease-spring);
+}
+
+@keyframes copied-pop {
+  50% {
+    transform: scale(1.08);
+  }
 }
