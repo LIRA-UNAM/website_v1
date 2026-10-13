@@ -4,6 +4,10 @@ image: images/members/german.jpg
 role: graduate
 affiliation: Ingeniería - UNAM
 group: alum
+aliases:
+  - German Alday-Salazar
+  - German Alday
+  - G. Alday-Salazar
 links:
   github: https://github.com/Aldaysg
   email: aldays.german@gmail.com
