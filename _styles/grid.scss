@@ -42,6 +42,9 @@ $one: 500px;
   }
 
   & img {
+    // fill the cell even when the image is narrower than it (e.g. 360px
+    // portrait clips); !important beats figure.html's inline `width: auto`
+    width: 100% !important;
     aspect-ratio: 1 / 1;
     object-fit: cover;
     max-width: unset;
