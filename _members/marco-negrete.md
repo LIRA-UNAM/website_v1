@@ -2,42 +2,49 @@
 name: Dr. Marco Negrete
 image: images/members/marco.jpg
 role: professor
-affiliation: FI - UNAM
+affiliation: Division de Ingenieria Electrica - FI UNAM
 group: alum
 # shown on the People page (wide professor card); placeholder text for now
 research:
-  - Lorem ipsum dolor
-  - Sit amet consectetur
-  - Adipiscing elit
-  - Sed do eiusmod
+  - Mobile Robotics
+  - Artificial Intelligence
+  - Autonomous Navigation
+  - 
 education:
-  - degree: Ph.D. in Lorem Ipsum Dolor
-    institution: Universitas Sit Amet
-    year: 2015
-  - degree: M.Sc. in Consectetur Adipiscing
-    institution: Universitas Sit Amet
+  - degree: Ph.D. Computer Science
+    institution: Universidad Nacional Autónoa de México
+    year: 2019
+  - degree: M.Sc. in Control Engineering
+    institution: Universidad Nacional Autónoma de México
     year: 2011
-  - degree: B.Sc. in Elit Sed Do Eiusmod
-    institution: Collegium Tempor Incididunt
+  - degree: B.Sc. in Electrical Engineering
+    institution: Universidad Nacional Autónoma de México
     year: 2008
+aliases:
+  - Marco Negrete
+  - Marco Negrete-Villanueva
+  - Marco Negrete Villanueva
+  - M.A. Negrete-Villanueva
+  - Negrete-Villanueva
 links:
-  github: lorem-ipsum
+  github: mnegretev
 ---
 
 ## Biography
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus, nulla gravida orci a odio, nullam varius turpis et commodo pharetra.
-
+- Full time Professor at the School of Engineering, UNAM
+- Head of the Department of Digital Signal Processing
+- Director of the Advanced Robotics Research Laboratory (LIRA)
+- President and Member of Federación Mexicana de Robótica (FMR)
+- National Researcher SNI I
 ## Research
 
-Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-
-- **Lorem ipsum dolor:** nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-- **Sit amet consectetur:** neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.
-- **Adipiscing elit:** ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam.
+- **Mobile Robotics** Prof. Marco has led and directed the Pumas team on competitions such as Robocup@Home and Robocup@Humanoid leagues
+- **Autonomous Navigation** An area of expertise and widely applied on Mobile Robot tasks.
+- **Unmaned Aerial Vehicles** A new research field embraced by Prof. Marco on Advanced UAV's and autonomous drone technology.
 
 ## Teaching
 
-At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.
+![Prof. Negrete interview by FI UNAM inviting visiting students](http://youtube.com/watch?v=X2F5HTAJ2lE)
+
+![Prof. Negrete online conference on AI and frontier models](http://youtube.com/watch?v=X2F5HTAJ2lE)
