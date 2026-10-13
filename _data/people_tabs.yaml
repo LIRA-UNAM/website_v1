@@ -1,18 +1,17 @@
 # tabs for the people page tabbed member list
-# each entry: id (unique), label (tab text), icon (font awesome class), filter (data_filter expression on member fields)
+# each entry: id (unique), label (tab text), filter (data_filter expression on member fields),
+# and optional icon (font awesome class; defaults to the icon of the role in types.yaml matching id,
+# so the tab icon matches the badge on its member cards)
 # professors are shown outside the tabs, at the top of the page
 
 - id: graduate
   label: Masters Students
-  icon: fa-solid fa-user-graduate
   filter: role == 'graduate'
 
 - id: undergrad
   label: Undergraduate Students
-  icon: fa-solid fa-graduation-cap
   filter: role == 'undergrad'
 
 - id: external
   label: Past Alumni
-  icon: fa-solid fa-clock-rotate-left
   filter: role == 'external'

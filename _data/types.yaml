@@ -7,15 +7,15 @@ professor:
   description: Research Professor
 
 external:
-  icon: fa-solid fa-glasses
-  description: External Collaborator
+  icon: fa-solid fa-clock-rotate-left
+  description: Alumni
 
 phd:
   icon: fa-solid fa-graduation-cap
   description: PhD Student
 
 undergrad:
-  icon: fa-solid fa-user-graduate
+  icon: fa-solid fa-book-open-reader
   description: Undergraduate
 
 graduate:
@@ -41,11 +41,6 @@ website:
   icon: fa-solid fa-globe
   text: Website
   tooltip: Website
-
-external:
-  icon: fa-solid fa-up-right-from-square
-  text: External Link
-  tooltip: External link
 
 home-page:
   icon: fa-solid fa-house-user

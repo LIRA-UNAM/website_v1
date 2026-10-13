@@ -29,14 +29,15 @@
   <div class="people-tabs-nav" role="tablist">
     {% for tab in tabs %}
       {% assign count = all_data | data_filter: tab.filter | size %}
+      {% assign tab_icon = tab.icon | default: site.data.types[tab.id].icon %}
       <label
         class="people-tabs-label"
         for="{{ prefix }}-{{ tab.id }}"
         role="tab"
         aria-controls="{{ prefix }}-{{ tab.id }}-panel"
       >
-        {% include icon.html icon=tab.icon %}
-        {{ tab.label }}
+        {% include icon.html icon=tab_icon %}
+        <span class="people-tabs-text">{{ tab.label }}</span>
         <span class="people-tabs-count">{{ count }}</span>
       </label>
     {% endfor %}
@@ -97,8 +98,19 @@
         display: flex;
       }
       #{{ prefix }}-{{ tab.id }}:checked ~ .people-tabs-nav label[for="{{ prefix }}-{{ tab.id }}"] {
+        background: var(--background-alt);
+        border-color: var(--light-gray);
+        border-bottom-color: var(--background-alt);
+        box-shadow: inset 0 3px 0 var(--secondary);
+        color: var(--primary);
+      }
+      #{{ prefix }}-{{ tab.id }}:checked ~ .people-tabs-nav label[for="{{ prefix }}-{{ tab.id }}"] .people-tabs-count {
         background: var(--primary);
         color: var(--background);
+      }
+      #{{ prefix }}-{{ tab.id }}:focus-visible ~ .people-tabs-nav label[for="{{ prefix }}-{{ tab.id }}"] {
+        outline: solid 2px var(--primary);
+        outline-offset: -2px;
       }
     {% endfor %}
   </style>
