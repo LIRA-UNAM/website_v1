@@ -32,6 +32,8 @@ links:
 
 ## Biography
 
+Prof. Marco Negrete is a full time professor and researcher at the Advanced Robotics Research Laboratory. Prof. Marco has 20 years of experience working in robotics and has published several articles on artificial intelligence and advanced robotics.
+
 - Full time Professor at the School of Engineering, UNAM
 - Head of the Department of Digital Signal Processing
 - Director of the Advanced Robotics Research Laboratory (LIRA)
@@ -39,12 +41,14 @@ links:
 - National Researcher SNI I
 ## Research
 
-- **Mobile Robotics** Prof. Marco has led and directed the Pumas team on competitions such as Robocup@Home and Robocup@Humanoid leagues
+- **Mobile Robotics** Prof. Marco has led and directed the Pumas team on competitions such as Robocup@Home and Robocup@Humanoid leagues.
 - **Autonomous Navigation** An area of expertise and widely applied on Mobile Robot tasks.
 - **Unmaned Aerial Vehicles** A new research field embraced by Prof. Marco on Advanced UAV's and autonomous drone technology.
 
 ## Teaching
 
-![Prof. Negrete interview by FI UNAM inviting visiting students](http://youtube.com/watch?v=X2F5HTAJ2lE)
+### Prof. Negrete interview by FI UNAM inviting visiting students
+![](https://www.youtube.com/watch?v=4jnTPHOSP4A)
 
-![Prof. Negrete online conference on AI and frontier models](http://youtube.com/watch?v=X2F5HTAJ2lE)
+### Prof. Negrete online conference on AI and frontier models
+![](https://www.youtube.com/watch?v=QcpZAoWmyRs&t=11s)

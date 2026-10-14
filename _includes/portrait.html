@@ -69,7 +69,9 @@
             </span>
             <div class="portrait-fields">
               {% for field in doc.research %}
-                <span class="portrait-field">{{ field }}</span>
+                {% if field and field != "" %}
+                  <span class="portrait-field">{{ field }}</span>
+                {% endif %}
               {% endfor %}
             </div>
           </div>
