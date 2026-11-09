@@ -11,9 +11,10 @@ This website is built with [Jekyll](https://jekyllrb.com/) and is based on the [
 ## Contents
 
 - [Run the site locally](#run-the-site-locally)
-- [Add a new publication](#add-a-new-publication)
+- [Add a new publication article](#add-a-new-publication-article)
 - [Add a new blog post](#add-a-new-blog-post)
 - [Add a new team member](#add-a-new-team-member)
+- [Content you can use in posts and member pages](#content-you-can-use-in-posts-and-member-pages)
 - [How to contribute changes](#how-to-contribute-changes)
 - [How the automation works](#how-the-automation-works)
 
@@ -27,9 +28,12 @@ You need [Docker](https://www.docker.com/) and a clone of this repository. From 
 
 Then open <http://localhost:4000>. The site rebuilds when you save a file, and citations are regenerated when `_data/sources.yaml` changes.
 
-## Add a new publication
+## Add a new publication article
 
-Publications are listed by hand in `_data/sources.yaml`. The site reads them from `_data/citations.yaml`, which is **generated automatically, so don't edit it**.
+> [!WARNING]
+> Do not modify `_data/citations.yaml` yourself. It is generated automatically, and manual changes will be overwritten. To add or change a publication, modify `_data/sources.yaml`.
+
+Publications are listed by hand in `_data/sources.yaml`, and the site reads the generated results from `_data/citations.yaml`.
 
 1. Optional: add a thumbnail to `images/publications/`.
 2. Add an entry to `_data/sources.yaml`:
@@ -73,6 +77,23 @@ Blog posts appear on the [Blog page](https://lira.unam.mx/media/).
 
 4. Check the post locally and [open a pull request](#how-to-contribute-changes).
 
+### All supported post fields
+
+These go between the `---` lines at the top of the file. All of them are optional, but every post should have `title`, `image` and `author`.
+
+| Field | Format | What it does |
+| --- | --- | --- |
+| `title` | Text | Post heading and its title on the Blog page |
+| `image` | File path | Thumbnail on the Blog page. It isn't shown on the post itself, so add it to the content if you want it there |
+| `author` | Text or list | One or more authors. A value matching a file in `_members/` shows that member's portrait; anything else is shown as plain text |
+| `tags` | Text or list | Tags shown on the post, which link to a Blog page search. Use a list, such as `[robot soccer, mexico]`, for tags with spaces |
+| `date` | `YYYY-MM-DD` | Replaces the date from the file name |
+| `last_modified_at` | `YYYY-MM-DD` | Replaces the "last updated" date, which otherwise comes from git |
+| `description` | Text | Summary for search engines and link previews |
+| `excerpt` | Text | Summary on the Blog page. Otherwise it uses the first paragraph, or the text between `<!-- excerpt start -->` and `<!-- excerpt end -->` in the post |
+
+The [fields for all pages](#fields-for-all-pages) also work on posts.
+
 ## Add a new team member
 
 Each person has one file in `_members/`, which creates their profile page and their card on the [People page](https://lira.unam.mx/people/).
@@ -105,6 +126,98 @@ Each person has one file in `_members/`, which creates their profile page and th
 4. Check the page locally and [open a pull request](#how-to-contribute-changes).
 
 When someone leaves the lab, change their `role` to `external` rather than deleting the file.
+
+### All supported member fields
+
+These go between the `---` lines at the top of the file. The text below them is the biography, shown only on the member's own page.
+
+| Field | Format | What it does |
+| --- | --- | --- |
+| `name` | Text | The member's name. Required |
+| `image` | File path | Portrait photo. A placeholder is shown if it's missing |
+| `role` | One of the [roles above](#add-a-new-team-member) | Sets the People page section, badge icon and role label |
+| `affiliation` | Text | Shown under the name |
+| `description` | Text | Replaces the role label on the card, such as "Masters Student" |
+| `links` | Link types and values | Buttons on the member's page. See the table below |
+| `aliases` | List | Name variations used by the link to the member's papers on their page. Defaults to `name` |
+| `research` | List | Research fields, shown only on `wide` cards |
+| `education` | List of `degree`, `institution` and `year` | Education history, shown only on `wide` cards |
+| `style` | `small`, `tiny` or `wide` | Changes this member's card. Professors already use `wide` |
+
+For example:
+
+```yaml
+research:
+  - Mobile Robotics
+education:
+  - degree: Ph.D. Computer Science
+    institution: Universidad Nacional Autónoma de México
+    year: 2019
+aliases:
+  - First Last
+  - F. Last
+links:
+  github: their-github-username
+  email: name@example.com
+```
+
+Leave out any link that doesn't apply rather than leaving it blank. These link types are available under `links`:
+
+| Link type | Value |
+| --- | --- |
+| `github`, `twitter`, `bluesky`, `facebook`, `instagram`, `youtube` | Username or handle |
+| `linkedin` | Profile name, the part after `linkedin.com/in/` |
+| `orcid` | ORCID iD, such as `0000-0001-2345-6789` |
+| `google-scholar` | The `user=` value in the profile address |
+| `email` | Email address |
+| `phone` | Phone number |
+| `website`, `home-page`, `link` | Full web address |
+
+The `group` field that appears in some existing member files has no effect on the site. The [fields for all pages](#fields-for-all-pages) also work on member pages.
+
+## Content you can use in posts and member pages
+
+### Fields for all pages
+
+These work at the top of both post and member files:
+
+| Field | Format | What it does |
+| --- | --- | --- |
+| `header` | File path | Replaces the background image of the page header |
+| `footer` | File path | Replaces the background image of the page footer |
+| `header-dark` | `true` or `false` | Whether the header uses a dark background style |
+| `footer-dark` | `true` or `false` | Whether the footer uses a dark background style |
+| `redirect_from` | List | Old addresses that should redirect to this page |
+| `permalink` | Address | Replaces the page's automatic address |
+| `published` | `false` | Hides the page from the site without deleting the file |
+
+### Text formatting
+
+Below the `---` lines you can use regular Markdown: headings, **bold**, _italics_, links, images, lists, quotes, code blocks and tables. The site also supports [Mermaid](https://mermaid.js.org/) diagrams in `mermaid` code blocks and math between `$$` signs.
+
+### Components
+
+Add these anywhere in the content. Quoted values are text, and a value without quotes refers to a variable created with `capture`.
+
+```liquid
+{% capture text %}This is **Markdown** content.{% endcapture %}
+{% include alert.html type="info" content=text %}
+```
+
+| Component | Example | Options |
+| --- | --- | --- |
+| Figure | `{% include figure.html image="images/photo.jpg" caption="The team" %}` | `image`, `caption`, `link`, `width`, `height` |
+| Alert | `{% include alert.html type="warning" content=text %}` | `type` (`tip`, `help`, `info`, `success`, `warning`, `error`), `content` |
+| Button | `{% include button.html type="github" link="LIRA-UNAM" %}` | `type`, `link`, `text`, `icon`, `tooltip`, `style` (`bare`), `flip` |
+| Icon | `{% include icon.html icon="fa-solid fa-robot" %}` | `icon` ([Font Awesome](https://fontawesome.com/icons) name) |
+| Float (text beside an element) | `{% include float.html content=text %}` | `content`, `flip`. End it with `{% include float.html clear=true %}` |
+| Grid | `{% include grid.html content=text %}` | `content`, `style` (`square`) |
+| Card | `{% include card.html image="images/photo.jpg" title="Robot" link="/projects" %}` | `image`, `title`, `subtitle`, `description`, `link`, `tooltip`, `tags`, `repo`, `style` (`small`) |
+| Feature | `{% include feature.html image="images/photo.jpg" title="Robot" text=text %}` | `image`, `title`, `text`, `link`, `flip` |
+| Section | `{% include section.html %}` | `background`, `dark`, `size` |
+| Member portrait | `{% include portrait.html lookup="marco-negrete" %}` | `lookup` (file name in `_members/`), `style` |
+
+See the [template documentation](https://greene-lab.gitbook.io/lab-website-template-docs) for more detail on each component.
 
 ## How to contribute changes
 
