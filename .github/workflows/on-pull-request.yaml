@@ -2,21 +2,15 @@ name: on-pull-request
 run-name: on pull request activity
 
 on:
-  pull_request_target:
-    types:
-      - opened
-      - reopened
-      - synchronize
-      - closed
+  pull_request:
+    branches:
+      - main
 
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
 
 jobs:
-  update-citations:
-    uses: ./.github/workflows/update-citations.yaml
-
-  build-preview:
-    needs: update-citations
-    uses: ./.github/workflows/build-preview.yaml
+  # check that the site builds. the built site is attached to the run as a
+  # downloadable artifact, for previewing.
+  build-site:
+    uses: ./.github/workflows/build-site.yaml

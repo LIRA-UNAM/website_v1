@@ -1,31 +1,37 @@
 name: build-site
-run-name: build live site
+run-name: build site
 
 on:
   # run when called from another workflow
   workflow_call:
+    inputs:
+      deploy:
+        type: boolean
+        default: false
 
   # run if user manually requests it
   workflow_dispatch:
-
-# variables
-env:
-  PREVIEWS_FOLDER: preview
+    inputs:
+      deploy:
+        description: Deploy to the server (also requires DEPLOY_ENABLED=true)
+        type: boolean
+        default: false
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  build-site:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Debug dump
-        if: runner.debug == '1'
-        uses: crazy-max/ghaction-dump-context@v2
-
+      # ref picks up any citation commit made earlier in the same run.
+      # full history is needed by jekyll-last-modified-at.
       - name: Checkout branch contents
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
 
       - name: Install Ruby packages
         uses: ruby/setup-ruby@v1
@@ -33,25 +39,68 @@ jobs:
           ruby-version: "3.1"
           bundler-cache: true
 
-      - name: Get Pages url
-        id: pages
-        uses: actions/configure-pages@v4
-
-      - name: SSH debug
-        if: runner.debug == '1'
-        uses: mxschmitt/action-tmate@v3
-
-      - name: Set root url
+      - name: Build site
+        env:
+          JEKYLL_ENV: production
+          SITE_URL: ${{ vars.SITE_URL }}
         run: |
-          printf "\n\nurl: ${{ steps.pages.outputs.origin }}" >> _config.yaml
+          config="_config.yaml"
+          if [ -n "$SITE_URL" ]; then
+            printf 'url: "%s"\n' "$SITE_URL" > "$RUNNER_TEMP/url.yaml"
+            config="$config,$RUNNER_TEMP/url.yaml"
+          fi
+          bundle exec jekyll build --config "$config"
 
-      - name: Build live version of site
-        run: |
-          JEKYLL_ENV=production bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path || '' }}"
-
-      - name: Commit live site to Pages branch
-        uses: JamesIves/github-pages-deploy-action@v4.5.0
+      - name: Upload built site
+        uses: actions/upload-artifact@v7
         with:
-          folder: _site
-          clean-exclude: ${{ env.PREVIEWS_FOLDER }}
-          force: false
+          name: site
+          path: _site
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 14
+
+  deploy:
+    needs: build
+    if: inputs.deploy && vars.DEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: deploy-site
+      cancel-in-progress: false
+
+    steps:
+      - name: Download built site
+        uses: actions/download-artifact@v8
+        with:
+          name: site
+          path: site
+
+      - name: Set up SSH
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
+          ssh_command="ssh -i $HOME/.ssh/deploy_key -o IdentitiesOnly=yes -o BatchMode=yes -o StrictHostKeyChecking=yes"
+          echo "SSH_COMMAND=$ssh_command" >> "$GITHUB_ENV"
+
+      # upload to a staging folder first, so a failed transfer leaves web/ alone.
+      # --delete only applies to the staging folder, clearing any failed upload.
+      - name: Upload site to staging folder on server
+        env:
+          DEPLOY_TARGET: ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}
+        run: |
+          rsync -rlptz --delete --stats --chmod=D755,F644 \
+            -e "$SSH_COMMAND" \
+            site/ "$DEPLOY_TARGET:web.incoming/"
+
+      # same as the manual update: web/ becomes backup/, replacing the old backup
+      - name: Swap staging folder into web
+        env:
+          DEPLOY_TARGET: ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }}
+        run: |
+          $SSH_COMMAND "$DEPLOY_TARGET" \
+            'set -eu; cd "$HOME"; test -f web.incoming/index.html; rm -rf backup; if [ -d web ]; then mv web backup; fi; mv web.incoming web'
