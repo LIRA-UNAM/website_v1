@@ -3,6 +3,8 @@ title: Laboratorio de Investigación en Robótica Avanzada
 subtitle: Universidad Nacional Autónoma de México
 description: 
 header: images/background2.png
+# live simulation behind the home page header (remove to use only the image)
+hero-sim: sim/?panel=0
 footer: images/background3.png
 proofer: false
 
