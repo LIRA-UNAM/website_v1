@@ -408,3 +408,58 @@ header .home .logo svg {
   height: auto;
   object-fit: contain;
 }
+
+// live simulation behind the hero (see _includes/header.html): it replaces
+// the photo, sits under a gradient that darkens only the bottom, and fades
+// out as the header shrinks on scroll
+header[data-big] .hero-sim {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  z-index: -2;
+  pointer-events: none;
+  opacity: calc(1 - var(--shrink));
+}
+
+header[data-big][data-compact] .hero-sim {
+  display: none;
+}
+
+// no photo: just a gradient that keeps the middle clear for the demo
+header[data-big][data-sim]::before {
+  z-index: -1;
+  background-image: linear-gradient(
+    180deg,
+    transparent 0%,
+    transparent 55%,
+    rgb(0 21 56 / 0.55) 80%,
+    rgb(0 21 56 / 0.9) 100%
+  );
+}
+
+// title and menu at the bottom, on a see-through panel, leaving the
+// middle of the hero to the demo; the logo is in the demo, so it's hidden
+header[data-big][data-sim]:not([data-compact]) {
+  justify-content: flex-end;
+  gap: 12px;
+  padding-bottom: 72px; // clears the scroll cue
+
+  .logo {
+    display: none;
+  }
+
+  .home,
+  nav {
+    padding: 10px 24px;
+    border-radius: var(--rounded);
+    background: rgb(0 21 56 / 0.55);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+
+  .title {
+    font-size: calc((1 - var(--shrink)) * var(--xl) + var(--shrink) * var(--large));
+  }
+}

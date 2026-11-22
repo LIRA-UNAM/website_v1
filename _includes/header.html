@@ -14,8 +14,22 @@
   {% endif %}
   {% if page.url == "/" %}
     data-big
+    {% if site.hero-sim %}data-sim{% endif %}
   {% endif %}
 >
+  {% if page.url == "/" and site.hero-sim %}
+    {% comment %}
+      live mjswan simulation (built into /sim, see sim/README) behind the hero;
+      the header image stays as the fallback while it loads and on small screens
+    {% endcomment %}
+    <iframe
+      class="hero-sim"
+      src="{{ site.hero-sim | relative_url }}"
+      title="K1 and G1 robots around the LIRA logo"
+      aria-hidden="true"
+      tabindex="-1"
+    ></iframe>
+  {% endif %}
   <a href="{{ "/" | relative_url }}" class="home">
     {% if logo %}
       <span class="logo">

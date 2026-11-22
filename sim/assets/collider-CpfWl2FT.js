@@ -1,0 +1,1 @@
+import{c as e}from"./index-CKSpeKf4.js";async function t(t,n){let r=(await new e().parseAsync(t,``)).scene;return r.traverse(e=>{e.visible=!1}),n.add(r),r}function n(e,t){t.remove(e),e.traverse(e=>{let t=e;t.geometry?.dispose(),Array.isArray(t.material)?t.material.forEach(e=>e.dispose()):t.material?.dispose()})}export{n as disposeCollider,t as loadCollider};
