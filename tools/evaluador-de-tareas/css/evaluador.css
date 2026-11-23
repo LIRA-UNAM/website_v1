@@ -1,0 +1,534 @@
+/* =========================================================
+   Evaluador de tareas | estilos propios dentro del sitio de LIRA
+
+   - Todo está acotado a .evaluador para no tocar el resto del sitio.
+   - Usa las variables del tema de LIRA (_styles/-theme.css): --primary,
+     --surface, --light-gray, --shadow, --heading, etc. Así el modo
+     oscuro del sitio funciona aquí sin código extra.
+   - Algunos estilos globales del sitio se neutralizan solo dentro del
+     evaluador: form (flex centrado), ul/li (viñetas y sangría), p
+     (márgenes grandes) y body (texto centrado).
+   ========================================================= */
+
+/* ---------- Colores propios: aprobado / fallido ---------- */
+.evaluador {
+  --exito: #2c8c5a;
+  --exito-tinte: rgb(44 140 90 / 0.10);
+  --falla: #c0392b;
+  --falla-tinte: rgb(192 57 43 / 0.09);
+  --tinte: color-mix(in srgb, var(--primary) 9%, transparent);
+  --alto-control: 46px;   /* como la caja de búsqueda del sitio */
+}
+[data-dark=true] .evaluador {
+  --exito: #4cc38a;
+  --exito-tinte: rgb(76 195 138 / 0.12);
+  --falla: #f2766b;
+  --falla-tinte: rgb(242 118 107 / 0.12);
+}
+
+/* ---------- Panel ---------- */
+.evaluador {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(24px, 4vw, 40px);
+  background: var(--surface);
+  border: 1px solid var(--light-gray);
+  border-radius: var(--rounded-lg);
+  box-shadow: var(--shadow);
+  color: var(--text);
+  text-align: left;              /* el body del sitio centra el texto */
+  line-height: var(--spacing);
+}
+
+/* Neutraliza estilos globales del sitio dentro del evaluador */
+.evaluador p { margin: 0; font-size: 1rem; }
+.evaluador ul { margin: 0; padding: 0; list-style: none; }
+.evaluador li { margin: 0; padding: 0; line-height: inherit; }
+.evaluador li::marker { content: none; }
+.evaluador .button { margin: 0; }
+
+.evaluador .formulario {
+  display: grid;                 /* el sitio pone form { display: flex } */
+  gap: 28px;
+  justify-content: stretch;
+  align-items: stretch;
+}
+
+.evaluador .campo__etiqueta {
+  display: block;
+  margin-bottom: 10px;
+  font-family: var(--heading);
+  font-size: 1.075rem;
+  font-weight: var(--semi-bold);
+}
+
+.evaluador .campo__mensaje {
+  margin-top: 8px;
+  min-height: 1.6em;
+  color: var(--gray);
+  font-size: 0.925rem;
+}
+.evaluador .campo__mensaje--error { color: var(--falla); font-weight: var(--semi-bold); }
+.evaluador .campo__mensaje--ok    { color: var(--exito); font-weight: var(--semi-bold); }
+
+/* ---------- Menú desplegable de tareas ----------
+   Misma forma de píldora que las cajas de texto del sitio (textbox.css) */
+
+.evaluador .menu { position: relative; }
+
+.evaluador .menu__boton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  height: var(--alto-control);
+  padding: 0 18px 0 20px;
+  background: var(--surface);
+  border: 1px solid var(--light-gray);
+  border-radius: 999px;
+  color: var(--text);
+  font: inherit;
+  font-weight: var(--semi-bold);
+  text-align: left;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.evaluador .menu__boton:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--primary) 30%, var(--light-gray));
+}
+.evaluador .menu__boton[aria-expanded=true] {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 15%, transparent);
+}
+.evaluador .menu__boton:disabled { cursor: not-allowed; opacity: 0.6; }
+
+.evaluador .menu__valor--vacio { color: var(--gray); font-weight: var(--regular); }
+
+.evaluador .menu__flecha {
+  flex: none;
+  color: var(--gray);
+  font-size: 0.9rem;
+  transition: transform var(--transition);
+}
+.evaluador .menu__boton[aria-expanded=true] .menu__flecha { transform: rotate(180deg); }
+
+/* La cortinita: se desenrolla de arriba hacia abajo */
+.evaluador .menu__lista {
+  position: absolute;
+  z-index: 10;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  padding: 6px;
+  background: var(--surface);
+  border: 1px solid var(--light-gray);
+  border-radius: var(--rounded);
+  box-shadow: var(--shadow-lg);
+  clip-path: inset(0 0 100% 0 round var(--rounded));
+  visibility: hidden;
+  transition: clip-path 260ms var(--ease-out), visibility 0s linear 260ms;
+}
+.evaluador .menu--abierto .menu__lista {
+  clip-path: inset(0 0 0 0 round var(--rounded));
+  visibility: visible;
+  transition: clip-path 260ms var(--ease-out), visibility 0s;
+}
+.evaluador .menu__lista:focus { outline: none; }
+
+.evaluador .menu__opcion {
+  position: relative;
+  display: grid;
+  gap: 2px;
+  padding: 10px 40px 10px 14px;
+  border-radius: var(--rounded-sm);
+  cursor: pointer;
+}
+.evaluador .menu__opcion--activa { background: var(--overlay); }
+.evaluador .menu__lista:focus-visible .menu__opcion--activa { box-shadow: inset 0 0 0 2px var(--secondary); }
+
+.evaluador .menu__nombre { font-family: var(--heading); font-weight: var(--semi-bold); }
+.evaluador .menu__descripcion { color: var(--gray); font-size: 0.875rem; }
+
+.evaluador .menu__opcion[aria-selected=true]::after {
+  content: "";
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  width: 6px;
+  height: 11px;
+  border: solid var(--primary);
+  border-width: 0 2.5px 2.5px 0;
+  transform: translateY(-65%) rotate(45deg);
+}
+
+/* ---------- Subida de archivo ----------
+   El input toma el estilo de píldora de textbox.css; aquí solo se ajusta */
+
+.evaluador .subida {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+
+.evaluador .subida__nombre {
+  min-width: 0;
+  height: var(--alto-control);
+  padding: 0 20px;
+  font-family: var(--code);
+  font-size: 0.925rem;
+  text-overflow: ellipsis;
+  cursor: pointer;
+}
+.evaluador .subida__nombre::placeholder { color: var(--gray); }
+.evaluador .subida__nombre:disabled { cursor: not-allowed; opacity: 0.6; }
+
+.evaluador .subida--arrastrando .subida__nombre {
+  border-style: dashed;
+  border-color: var(--primary);
+  background: var(--overlay);
+}
+.evaluador .subida--error .subida__nombre { border-color: var(--falla); }
+.evaluador .subida--ok .subida__nombre    { border-color: var(--exito); }
+
+/* ---------- Botones: los .button del sitio, con dos ajustes ---------- */
+
+.evaluador .button {
+  height: var(--alto-control);
+  padding: 0 22px;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+/* Secundario: como el botón de copiar del sitio (superficie con borde) */
+.evaluador .boton--secundario {
+  border-color: var(--light-gray);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow-sm);
+}
+.evaluador .boton--secundario .icon { color: var(--secondary); }
+.evaluador .boton--secundario:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--primary) 35%, var(--light-gray));
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow);
+}
+
+.evaluador .boton--principal { min-width: 168px; }
+
+/* El sitio no define botones deshabilitados */
+.evaluador .button:disabled,
+.evaluador .button:disabled:hover {
+  background: var(--light-gray);
+  border-color: var(--light-gray);
+  color: var(--gray);
+  box-shadow: none;
+  transform: none;
+  cursor: not-allowed;
+}
+
+.evaluador .acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 18px;
+}
+.evaluador .acciones__ayuda { color: var(--gray); font-size: 0.925rem; }
+
+/* =========================================================
+   Bloques de salida: análisis, casos y resultado
+   ========================================================= */
+
+.evaluador .bloque {
+  margin-top: 32px;
+  padding-top: 28px;
+  border-top: 1px solid var(--light-gray);
+}
+
+/* h2 del sitio (con su barrita dorada debajo), con margen más corto */
+.evaluador .bloque__titulo {
+  margin: 0 0 18px;
+  font-size: 1.45rem;
+}
+
+/* ---------- Análisis ---------- */
+
+.evaluador .veredicto {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 14px 16px;
+  border-radius: var(--rounded);
+  background: var(--overlay);
+}
+.evaluador .veredicto--ok    { background: var(--exito-tinte); }
+.evaluador .veredicto--falla { background: var(--falla-tinte); }
+.evaluador .veredicto--aviso { background: color-mix(in srgb, var(--secondary) 14%, transparent); }
+.evaluador .veredicto svg { width: 24px; height: 24px; margin-top: 1px; }
+.evaluador .veredicto--ok svg    { color: var(--exito); }
+.evaluador .veredicto--falla svg { color: var(--falla); }
+.evaluador .veredicto--aviso svg { color: var(--secondary); }
+.evaluador .veredicto strong { font-family: var(--heading); font-weight: var(--bold); }
+
+.evaluador .analisis__subtitulo {
+  margin: 24px 0 8px;
+  font-size: 1.05rem;
+  font-weight: var(--semi-bold);
+}
+
+.evaluador .rasgo {
+  display: grid;
+  grid-template-columns: 20px 1fr auto;
+  gap: 4px 12px;
+  align-items: center;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--light-gray);
+}
+.evaluador .rasgo:last-child { border-bottom: 0; }
+.evaluador .rasgo__icono {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+.evaluador .rasgo__icono svg { width: 12px; height: 12px; }
+.evaluador .rasgo--si .rasgo__icono { background: var(--exito); color: var(--background); }
+.evaluador .rasgo--no .rasgo__icono { background: var(--light-gray); color: var(--gray); }
+.evaluador .rasgo--no .rasgo__texto { color: var(--gray); }
+
+/* Igual que las etiquetas (.tag) del sitio */
+.evaluador .rasgo__etiqueta {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 1px 10px;
+  border-radius: 999px;
+  background: var(--tinte);
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: var(--semi-bold);
+  vertical-align: 1px;
+}
+.evaluador .rasgo__linea {
+  color: var(--gray);
+  font-family: var(--code);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.evaluador .parecido {
+  display: grid;
+  grid-template-columns: minmax(130px, 11rem) 1fr 3.2rem;
+  gap: 14px;
+  align-items: center;
+  padding: 6px 0;
+}
+.evaluador .parecido__nombre { font-size: 0.95rem; }
+.evaluador .parecido--elegida .parecido__nombre { font-weight: var(--bold); }
+.evaluador .parecido__pista,
+.evaluador .parecido__relleno { display: block; }
+.evaluador .parecido__pista {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--light-gray);
+  overflow: hidden;
+}
+.evaluador .parecido__relleno {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--gray);
+  transition: width 0.7s var(--ease-out);
+}
+.evaluador .parecido--elegida .parecido__relleno { background: var(--gradient-brand); }
+.evaluador .parecido__valor {
+  color: var(--dark-gray);
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+}
+
+/* ---------- Casos de prueba ---------- */
+
+.evaluador .progreso__cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+.evaluador .progreso__texto,
+.evaluador .progreso__porcentaje { font-variant-numeric: tabular-nums; }
+.evaluador .progreso__texto { font-weight: var(--bold); }
+.evaluador .progreso__porcentaje { color: var(--gray); font-weight: var(--semi-bold); }
+
+/* La barra: 100 segmentos, uno por caso de prueba */
+.evaluador .barra {
+  display: grid;
+  grid-template-columns: repeat(100, 1fr);
+  gap: 2px;
+  height: 30px;
+}
+.evaluador .seg {
+  border-radius: 2px;
+  background: var(--light-gray);
+  transition: background-color 140ms ease;
+}
+.evaluador .seg--actual   { background: var(--primary); }
+.evaluador .seg--aprobado { background: var(--exito); }
+.evaluador .seg--fallido  { background: var(--falla); }
+
+.evaluador .leyenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 20px;
+  margin-top: 12px;
+  color: var(--gray);
+  font-size: 0.875rem;
+}
+.evaluador .leyenda li { display: flex; align-items: center; gap: 7px; }
+.evaluador .leyenda__muestra { width: 10px; height: 10px; border-radius: 2px; }
+.evaluador .leyenda__muestra--aprobado  { background: var(--exito); }
+.evaluador .leyenda__muestra--fallido   { background: var(--falla); }
+.evaluador .leyenda__muestra--pendiente { background: var(--light-gray); }
+
+/* ---------- Resultado ---------- */
+
+.evaluador .resultado {
+  margin-top: 24px;
+  padding: 20px 22px;
+  border: 1px solid var(--light-gray);
+  border-left-width: 6px;
+  border-radius: var(--rounded);
+  animation: rise-in 0.45s var(--ease-out);   /* animación del sitio */
+}
+
+.evaluador .resultado__titulo {
+  font-family: var(--heading);
+  font-size: 1.7rem;
+  font-weight: var(--bold);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+/* Semáforo de la calificación [F13]: app.js pone data-semaforo según el
+   porcentaje (rojo < 40, naranja < 60, amarillo < 80, verde 80 o más).
+   Iguales en modo claro y oscuro; el porcentaje va en una etiqueta del color
+   con letra oscura para que el amarillo también se lea. */
+.evaluador .resultado[data-semaforo="rojo"]     { --semaforo: #ef5350; }
+.evaluador .resultado[data-semaforo="naranja"]  { --semaforo: #fb8c2b; }
+.evaluador .resultado[data-semaforo="amarillo"] { --semaforo: #fcd34d; }
+.evaluador .resultado[data-semaforo="verde"]    { --semaforo: #3cb371; }
+.evaluador .resultado[data-semaforo] { border-left-color: var(--semaforo); }
+.evaluador .resultado[data-semaforo] #resultado-porcentaje {
+  display: inline-block;
+  padding: 0 0.35em;
+  border-radius: var(--rounded-sm);
+  background: var(--semaforo);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.08);
+  color: #1a1c21;
+}
+
+.evaluador .resultado__detalle { margin-top: 6px; color: var(--dark-gray); }
+.evaluador .resultado__fallidos { margin-top: 10px; color: var(--gray); font-size: 0.9rem; }
+.evaluador .resultado__fallidos:empty { display: none; }
+.evaluador code,
+.evaluador .resultado__fallidos span { font-family: var(--code); font-size: 0.875em; }
+.evaluador code { color: var(--text); }
+
+/* ---------- Pantallas angostas ---------- */
+
+@media (max-width: 560px) {
+  .evaluador .subida { grid-template-columns: 1fr; }
+  .evaluador .button { width: 100%; }
+
+  .evaluador .rasgo { grid-template-columns: 20px 1fr; align-items: start; }
+  .evaluador .rasgo__icono { margin-top: 2px; }
+  .evaluador .rasgo__linea { grid-column: 2; }
+
+  .evaluador .parecido { grid-template-columns: 1fr 3rem; gap: 4px 12px; }
+  .evaluador .parecido__pista { grid-column: 1 / -1; grid-row: 2; }
+
+  /* En móvil la barra se parte en 2 filas de 50 casos */
+  .evaluador .barra {
+    grid-template-columns: repeat(50, 1fr);
+    grid-auto-rows: 14px;
+    height: auto;
+  }
+}
+
+/* =========================================================
+   Interruptor de idioma del encabezado (solo en esta página)
+   Copia el interruptor de modo oscuro del sitio (dark-toggle.css):
+   mismo tamaño, perilla y animación; la perilla dice EN o ES.
+   Sin marcar = inglés, marcado = español. Lo agrega js/i18n.js junto
+   al de modo oscuro, sin tocar el encabezado del sitio.
+   ========================================================= */
+
+.lang-toggle {
+  position: relative;
+  flex-shrink: 0;
+  width: 46px;
+  height: 26px;
+  margin: 0;
+  border-radius: 999px;
+  background: var(--light-gray);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.12), inset 0 0 0 1px var(--overlay);
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.lang-toggle:before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  transition: translate 0.4s var(--ease-spring);
+}
+
+.lang-toggle:after {
+  content: "EN";
+  position: absolute;
+  left: 13px;
+  top: 50%;
+  color: #1d2556;
+  font-family: var(--heading);
+  font-size: 8.5px;
+  font-weight: var(--bold);
+  letter-spacing: 0.02em;
+  transform: translate(-50%, -50%);
+  transition: translate 0.4s var(--ease-spring);
+}
+
+.lang-toggle:checked:before,
+.lang-toggle:checked:after {
+  translate: 20px 0;
+}
+
+.lang-toggle:checked:after {
+  content: "ES";
+}
+
+/* En pantallas angostas (el mismo corte en que el sitio pliega su menú) los
+   dos interruptores se apilan: modo oscuro arriba, idioma abajo. Así el
+   encabezado mide lo mismo que en las demás páginas del sitio.
+   66px = ancho del interruptor (46px) + separación del encabezado (20px).
+   Con el menú abierto el sitio los pasa a su propio renglón, debajo del
+   menú; ahí hay espacio y quedan uno junto al otro. */
+@media (max-width: 700px) {
+  header .nav-toggle:not(:checked) ~ .dark-toggle {
+    translate: 0 -16px;
+  }
+
+  header .nav-toggle:not(:checked) ~ .lang-toggle {
+    margin-left: -66px;
+    translate: 0 16px;
+  }
+}
