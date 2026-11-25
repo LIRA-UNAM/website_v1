@@ -8,8 +8,13 @@ nav:
 # {% include icon.html icon="fa-regular fa-envelope" %}Contact
 
 You can contact us by email or phone, or visit us on the ground floor of Building U – Classrooms for Graduate Studies and Advising, at the Graduate Program in Engineering, UNAM.
-<br>
-<br>
+
+{% capture email_note %}
+**Students:** when you write to us, please send your email to **both** addresses below (marco.negrete@ingenieria.unam.edu and lira@ingenieria.unam.edu) in the same message. That way, whoever is available can reply and we can respond to you faster. Briefly tell us who you are, your program or university, and what you are interested in (social service, research stay, thesis, etc.).
+{% endcapture %}
+{% include alert.html type="info" content=email_note %}
+
+<div class="contact-emails">
 
 {%
   include button-copy.html
@@ -24,6 +29,7 @@ You can contact us by email or phone, or visit us on the ground floor of Buildin
   text="lira@ingenieria.unam.edu"
   link="lira@ingenieria.unam.edu"
 %}
+</div>
 
 {%
   include button.html
@@ -40,43 +46,44 @@ You can contact us by email or phone, or visit us on the ground floor of Buildin
 
 {% include section.html %}
 
-## Colabora con nosotros
+## Work with us
 
 {%
   include card.html
   image="images/unam.png"
-  title="Servicio Social"
-  description="Ofrecemos plazas de servicio social para estudiantes de la UNAM interesados en robótica, visión computacional e inteligencia artificial. Escríbenos para conocer los proyectos disponibles y los requisitos de inscripción."
+  title="Social Service"
+  description="We offer social service positions for UNAM students interested in robotics, computer vision, and artificial intelligence. Email us to learn about the available projects and the enrollment requirements."
   style="medium"
 %}
 {%
   include card.html
   image="images/team.jpg"
-  title="Estancias de Investigación"
-  description="Recibimos estudiantes de otras universidades, nacionales e internacionales, interesados en realizar una estancia de investigación en el laboratorio. Cuéntanos tu perfil académico y tu área de interés."
+  title="Research Stays"
+  description="We welcome students from other universities, both national and international, who are interested in a research stay at the lab. Tell us about your academic background and your area of interest."
   style="medium"
 %}
 {%
   include card.html
   image="images/icon.png"
-  title="Patrocinadores"
-  description="Buscamos empresas e instituciones interesadas en patrocinar nuestros proyectos de robótica y nuestra participación en competencias internacionales como la RoboCup. Contáctanos para conocer las opciones de colaboración."
+  title="Sponsors"
+  description="We are looking for companies and institutions interested in sponsoring our robotics projects and our participation in international competitions such as RoboCup. Contact us to learn about the collaboration options."
   style="medium"
 %}
 
 {% include section.html %}
 
-## Ubicación
+## Location
 
-<iframe
-  src="https://www.google.com/maps?q=19.328473,-99.182140&z=17&output=embed"
-  width="100%"
-  height="450"
-  style="border: 0; border-radius: var(--rounded);"
-  allowfullscreen=""
-  loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade"
-></iframe>
+Find us on the map, or follow the short walkthrough showing the route to the lab, on the ground floor of Building U at the Graduate Program in Engineering.
+
+<div class="cols contact-location" style="--cols: 2">
+  <div>
+    <iframe src="https://www.google.com/maps?q=19.328473,-99.182140&z=17&output=embed" title="LIRA lab location on Google Maps" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+  <div>
+    <img src="{{ '/images/lab_location.webp' | relative_url }}" alt="Walking route to the LIRA lab in Building U, Graduate Program in Engineering, UNAM" width="960" height="540" loading="lazy" decoding="async">
+  </div>
+</div>
 
 {% include section.html dark=true %}
 
@@ -100,7 +107,7 @@ email: fainge@unam.mx
 {% capture col3 %}
 <div style="font-size: 0.9em;">
 <a href="http://posgrado.electrica.unam.mx/">Posgrado de Ingeniería Eléctrica</a><br>
-Edificio S – “Bernardo Quintana Arrioja”, Primer Piso, FI, Cd. Universitaria, Cd. Mx. C.P. 04510.
+Edificio S – “Bernardo Quintana Arrioja”, Primer Piso, FI, Cd. Universitaria, Cd. Mx. C.P. 04510.<br>
 email: ingenieria.electrica@posgrado.unam.mx
 </div>
 

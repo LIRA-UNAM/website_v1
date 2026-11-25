@@ -40,7 +40,7 @@
     // height) above the bottom of the hero
     const cueSpace = 76;
     const gap = 44;
-    const lift = 0.2;
+    const lift = 0.01;
     const side = 56;
     // hysteresis around the point the bar takes on the site's theme colours
     const compactOn = 0.9;
