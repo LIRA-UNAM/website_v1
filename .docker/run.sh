@@ -13,10 +13,14 @@ PLATFORM=""
 DOCKER_RUN="docker run"
 WORKING_DIR=$(pwd)
 
+# run container as the host user so generated files (_site, caches) aren't owned by root
+USER_FLAGS="--user $(id -u):$(id -g) --env HOME=/tmp"
+
 # fix windows faux linux shells/tools
 if [[ $OSTYPE == msys* ]] || [[ $OSTYPE == cygwin* ]]; then
     DOCKER_RUN="winpty docker run"
     WORKING_DIR=$(cmd //c cd)
+    USER_FLAGS=""
 fi
 
 # build docker image
@@ -29,6 +33,7 @@ ${DOCKER_RUN} ${PLATFORM} \
     --name ${CONTAINER} \
     --init \
     --rm \
+    ${USER_FLAGS} \
     --interactive \
     --tty \
     --publish 4000:4000 \
